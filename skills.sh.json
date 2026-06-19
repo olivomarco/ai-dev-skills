@@ -1,0 +1,32 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Code Quality",
+      "description": "Reviews that surface bugs, duplication, and refactoring opportunities in existing code.",
+      "skills": [
+        "functional-review",
+        "dry-consolidation",
+        "refactoring-opportunities",
+        "stale-code-check"
+      ]
+    },
+    {
+      "title": "Security & Testing",
+      "description": "Audits that harden the codebase and raise confidence through tests.",
+      "skills": [
+        "security-review",
+        "unit-test-coverage"
+      ]
+    },
+    {
+      "title": "Product & Docs",
+      "description": "Forward-looking product recommendations and documentation alignment.",
+      "skills": [
+        "next-feature-opportunities",
+        "align-documentation"
+      ]
+    }
+  ]
+}
