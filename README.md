@@ -9,6 +9,8 @@ A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI
 
 ## Skills
 
+### Code Quality & Testing
+
 | Skill | What it does | Changes code? |
 | --- | --- | --- |
 | [`security-review`](skills/security-review/SKILL.md) | OWASP-aligned security audit with a prioritized remediation plan | No (reports) |
@@ -17,8 +19,29 @@ A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI
 | [`refactoring-opportunities`](skills/refactoring-opportunities/SKILL.md) | Identifies code smells and tech debt with a prioritized refactor plan | No (reports) |
 | [`unit-test-coverage`](skills/unit-test-coverage/SKILL.md) | Audits coverage gaps and writes new unit tests | Yes (adds tests) |
 | [`stale-code-check`](skills/stale-code-check/SKILL.md) | Detects dead/obsolete code, deps, config, and assets | No (reports) |
+
+### Product & Documentation
+
+| Skill | What it does | Changes code? |
+| --- | --- | --- |
 | [`next-feature-opportunities`](skills/next-feature-opportunities/SKILL.md) | Recommends the most impactful next features to build | No (recommends) |
 | [`align-documentation`](skills/align-documentation/SKILL.md) | Updates existing docs in place to match the codebase | Yes (edits docs) |
+| [`humanizer`](skills/humanizer/SKILL.md) | Removes AI-generated traces from text for natural, human-sounding writing | Yes (edits text) |
+
+### Frontend & Design
+
+| Skill | What it does | Changes code? |
+| --- | --- | --- |
+| [`frontend-design`](skills/frontend-design/SKILL.md) | Creates distinctive, production-grade frontend interfaces with high design quality | Yes (creates code) |
+
+### Document Automation
+
+| Skill | What it does | Changes code? |
+| --- | --- | --- |
+| [`docx`](skills/docx/SKILL.md) | Create, read, edit, and manipulate Word documents (.docx files) | Yes (creates/edits) |
+| [`pdf`](skills/pdf/SKILL.md) | Process PDFs: extract text, merge, split, fill forms, create, OCR | Yes (creates/edits) |
+| [`pptx`](skills/pptx/SKILL.md) | Create, edit, and analyze PowerPoint presentations (.pptx files) | Yes (creates/edits) |
+| [`xlsx`](skills/xlsx/SKILL.md) | Create, read, edit, and manage Excel spreadsheets (.xlsx, .csv, .tsv files) | Yes (creates/edits) |
 
 ## Install
 

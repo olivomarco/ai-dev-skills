@@ -25,7 +25,25 @@
       "description": "Forward-looking product recommendations and documentation alignment.",
       "skills": [
         "next-feature-opportunities",
-        "align-documentation"
+        "align-documentation",
+        "content-humanizer"
+      ]
+    },
+    {
+      "title": "Frontend & Design",
+      "description": "Create distinctive, production-grade web interfaces and design solutions.",
+      "skills": [
+        "frontend-design"
+      ]
+    },
+    {
+      "title": "Document Automation",
+      "description": "Create, edit, and process documents: Word (.docx), PDF, PowerPoint (.pptx), and Excel (.xlsx).",
+      "skills": [
+        "docx",
+        "pdf",
+        "pptx",
+        "xlsx"
       ]
     }
   ]
