@@ -19,6 +19,7 @@ A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI
 | [`refactoring-opportunities`](skills/refactoring-opportunities/SKILL.md) | Identifies code smells and tech debt with a prioritized refactor plan | No (reports) |
 | [`unit-test-coverage`](skills/unit-test-coverage/SKILL.md) | Audits coverage gaps and writes new unit tests | Yes (adds tests) |
 | [`stale-code-check`](skills/stale-code-check/SKILL.md) | Detects dead/obsolete code, deps, config, and assets | No (reports) |
+| [`ai-slop-detector`](skills/ai-slop-detector/SKILL.md) | Detects, prevents, and remediates low-quality AI-generated code | No (reports) |
 
 ### Product & Documentation
 
@@ -26,7 +27,14 @@ A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI
 | --- | --- | --- |
 | [`next-feature-opportunities`](skills/next-feature-opportunities/SKILL.md) | Recommends the most impactful next features to build | No (recommends) |
 | [`align-documentation`](skills/align-documentation/SKILL.md) | Updates existing docs in place to match the codebase | Yes (edits docs) |
-| [`humanizer`](skills/humanizer/SKILL.md) | Removes AI-generated traces from text for natural, human-sounding writing | Yes (edits text) |
+| [`content-humanizer`](skills/content-humanizer/SKILL.md) | Removes AI-generated traces from text for natural, human-sounding writing | Yes (edits text) |
+
+### Planning & Design
+
+| Skill | What it does | Changes code? |
+| --- | --- | --- |
+| [`grilling`](skills/grilling/SKILL.md) | Interviews you relentlessly to stress-test a plan or design before building | No (interviews) |
+| [`grill-me`](skills/grill-me/SKILL.md) | Shortcut that kicks off a `grilling` session | No (interviews) |
 
 ### Frontend & Design
 

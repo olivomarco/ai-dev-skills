@@ -9,7 +9,16 @@
         "functional-review",
         "dry-consolidation",
         "refactoring-opportunities",
-        "stale-code-check"
+        "stale-code-check",
+        "ai-slop-detector"
+      ]
+    },
+    {
+      "title": "Planning & Design",
+      "description": "Interactive sessions that stress-test plans and designs before you build.",
+      "skills": [
+        "grilling",
+        "grill-me"
       ]
     },
     {
