@@ -1,6 +1,7 @@
 ---
 name: unit-test-coverage
 description: Audit unit-test coverage gaps and generate new tests to improve confidence on critical paths. Use when asked to "improve test coverage", "find untested code", "write missing unit tests", "audit test coverage", or "increase coverage". Technology-agnostic.
+disable-model-invocation: true
 metadata:
   author: olivomarco
   version: "1.0.0"

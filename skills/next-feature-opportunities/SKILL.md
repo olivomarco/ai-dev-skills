@@ -1,6 +1,7 @@
 ---
 name: next-feature-opportunities
 description: Review an application as a product and recommend the most impactful next features and functional improvements to build. Use when asked "what should I build next", "suggest new features", "next feature opportunities", "product improvement ideas", or "what's missing". Technology-agnostic.
+disable-model-invocation: true
 metadata:
   author: olivomarco
   version: "1.0.0"

@@ -1,6 +1,7 @@
 ---
 name: functional-review
 description: Review the existing functionality of an application for correctness, broken flows, missing states, and bugs. Use when asked to "do a functional review", "check the app works correctly", "find broken flows", "review functionality", or "audit user flows". Technology-agnostic.
+disable-model-invocation: true
 metadata:
   author: olivomarco
   version: "1.0.0"

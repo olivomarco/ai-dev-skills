@@ -1,6 +1,7 @@
 ---
 name: dry-consolidation
 description: Audit a codebase for duplication and inconsistency (DRY violations) and propose concrete consolidation into shared components, helpers, and utilities. Use when asked to "find duplication", "DRY this up", "check consistency", "deduplicate code", or "find repeated patterns". Technology-agnostic.
+disable-model-invocation: true
 metadata:
   author: olivomarco
   version: "1.0.0"

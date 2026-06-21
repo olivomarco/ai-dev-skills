@@ -1,6 +1,7 @@
 ---
 name: refactoring-opportunities
 description: Analyze a codebase for refactoring opportunities that improve maintainability, readability, and reduce technical debt, then produce a prioritized plan. Use when asked to "find refactoring opportunities", "identify code smells", "reduce tech debt", or "suggest refactors". Technology-agnostic.
+disable-model-invocation: true
 metadata:
   author: olivomarco
   version: "1.0.0"

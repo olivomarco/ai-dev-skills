@@ -1,6 +1,7 @@
 ---
 name: security-review
 description: Audit a codebase for security vulnerabilities and produce a prioritized remediation plan. Use when asked to "run a security review", "audit for vulnerabilities", "check OWASP Top 10", "find security issues", or "do a security audit". Technology-agnostic.
+disable-model-invocation: true
 metadata:
   author: olivomarco
   version: "1.0.0"
