@@ -23,10 +23,9 @@ Deliver a sharp, funny, and genuinely well-earned roast of the user based on the
 ## Workflow
 
 1. **Scan for roast material** — Walk the repo and collect concrete, citable evidence: dead code, duplication, scary functions, misleading docs, abandoned TODOs/FIXMEs, sketchy commit messages, secrets-shaped strings, dependency hoarding, naming crimes, and "temporary" things that are clearly permanent.
-2. **Pick the best targets** — Choose the 3–7 funniest, most representative offenses. Quality over quantity. A roast is curated, not exhaustive.
-3. **Sanity check** — If the material is thin or the repo is actually good, switch to the "nothing to roast" outcome instead of forcing it.
-4. **Roast with evidence** — Each burn must cite a specific file/line or pattern. The funniest roasts are the most specific ones.
-5. **Land softly** — Close with one sincere compliment or a "but seriously, fix this one thing" so it stings with love, not malice.
+2. **Sanity check** — If the material is thin or the repo is actually good, switch to the "nothing to roast" outcome instead of forcing it.
+3. **Roast with evidence** — Each burn must cite a specific file/line or pattern. The funniest roasts are the most specific ones.
+4. **Land softly** — Close with one sincere compliment or a "but seriously, fix this one thing" so it stings with love, not malice.
 
 ## Output Expectations
 
