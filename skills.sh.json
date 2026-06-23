@@ -9,6 +9,7 @@
         "functional-review",
         "dry-consolidation",
         "refactoring-opportunities",
+<<<<<<< HEAD
         "stale-code-check",
         "ai-slop-detector"
       ]
@@ -19,6 +20,12 @@
       "skills": [
         "grilling",
         "grill-me"
+||||||| parent of dbbcd7a (Add 'roast-me' skill for humorous code reviews and update README)
+        "stale-code-check"
+=======
+        "stale-code-check",
+        "roast-me"
+>>>>>>> dbbcd7a (Add 'roast-me' skill for humorous code reviews and update README)
       ]
     },
     {
