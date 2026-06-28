@@ -9,7 +9,6 @@
         "functional-review",
         "dry-consolidation",
         "refactoring-opportunities",
-<<<<<<< HEAD
         "stale-code-check",
         "ai-slop-detector"
       ]
@@ -20,12 +19,6 @@
       "skills": [
         "grilling",
         "grill-me"
-||||||| parent of dbbcd7a (Add 'roast-me' skill for humorous code reviews and update README)
-        "stale-code-check"
-=======
-        "stale-code-check",
-        "roast-me"
->>>>>>> dbbcd7a (Add 'roast-me' skill for humorous code reviews and update README)
       ]
     },
     {
@@ -60,6 +53,21 @@
         "pdf",
         "pptx",
         "xlsx"
+      ]
+    },
+    {
+      "title": "Workflow & Productivity",
+      "description": "Helpers that streamline your dev workflow, like handing off context between sessions.",
+      "skills": [
+        "session-handoff",
+        "youtube-transcript"
+      ]
+    },
+    {
+      "title": "Fun",
+      "description": "Lighthearted, user-invokable takes on your repo.",
+      "skills": [
+        "roast-me"
       ]
     }
   ]

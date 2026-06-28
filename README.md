@@ -27,7 +27,6 @@ A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI
 | --- | --- | --- |
 | [`next-feature-opportunities`](skills/next-feature-opportunities/SKILL.md) | Recommends the most impactful next features to build | No (recommends) |
 | [`align-documentation`](skills/align-documentation/SKILL.md) | Updates existing docs in place to match the codebase | Yes (edits docs) |
-<<<<<<< HEAD
 | [`content-humanizer`](skills/content-humanizer/SKILL.md) | Removes AI-generated traces from text for natural, human-sounding writing | Yes (edits text) |
 
 ### Planning & Design
@@ -51,10 +50,19 @@ A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI
 | [`pdf`](skills/pdf/SKILL.md) | Process PDFs: extract text, merge, split, fill forms, create, OCR | Yes (creates/edits) |
 | [`pptx`](skills/pptx/SKILL.md) | Create, edit, and analyze PowerPoint presentations (.pptx files) | Yes (creates/edits) |
 | [`xlsx`](skills/xlsx/SKILL.md) | Create, read, edit, and manage Excel spreadsheets (.xlsx, .csv, .tsv files) | Yes (creates/edits) |
-||||||| parent of dbbcd7a (Add 'roast-me' skill for humorous code reviews and update README)
-=======
+
+### Fun
+
+| Skill | What it does | Changes code? |
+| --- | --- | --- |
 | [`roast-me`](skills/roast-me/SKILL.md) | Evidence-based, savage-but-affectionate roast of your repo — user-invokable only | No (roasts) |
->>>>>>> dbbcd7a (Add 'roast-me' skill for humorous code reviews and update README)
+
+### Workflow & Productivity
+
+| Skill | What it does | Changes code? |
+| --- | --- | --- |
+| [`session-handoff`](skills/session-handoff/SKILL.md) | Captures the current session's summary, key decisions, important files, and open questions into a copy-pasteable handoff block to continue in a new session | No (generates text) |
+| [`youtube-transcript`](skills/youtube-transcript/SKILL.md) | Deterministically downloads transcripts from a YouTube video or playlist (via `yt-dlp`) and produces a detailed summary | No (writes transcripts) |
 
 ## Install
 
