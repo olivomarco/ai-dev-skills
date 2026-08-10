@@ -12,7 +12,7 @@ npx skills add lguz/humanize-writing-skill
 npx skills add mattpocock/skills
 npx skills add coleam00/excalidraw-diagram-skill
 npx skills add bahayonghang/drawio-skills
-npx skills add anthropics/skills --skill docx pdf xlsx pptx
+npx skills add anthropics/skills --skill docx pdf xlsx pptx skill-creator
 npx skills add claude-office-skills/skills --skill diagram-creator
 npx skills add jimliu/baoyu-skills --skill baoyu-infographic
 npx impeccable install
