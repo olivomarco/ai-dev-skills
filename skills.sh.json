@@ -36,6 +36,21 @@
         "next-feature-opportunities",
         "align-documentation"
       ]
+    },
+    {
+      "title": "Workflow & Productivity",
+      "description": "Helpers that streamline your dev workflow, like handing off context between sessions.",
+      "skills": [
+        "session-handoff",
+        "youtube-transcript"
+      ]
+    },
+    {
+      "title": "Fun",
+      "description": "Lighthearted, user-invokable takes on your repo.",
+      "skills": [
+        "roast-me"
+      ]
     }
   ]
 }

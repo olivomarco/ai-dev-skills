@@ -41,11 +41,18 @@ A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI
 | [`next-feature-opportunities`](skills/next-feature-opportunities/SKILL.md) | Recommends the most impactful next features to build | No (recommends) |
 | [`align-documentation`](skills/align-documentation/SKILL.md) | Updates existing docs in place to match the codebase | Yes (edits docs) |
 
-### Document Automation
+### Fun
 
 | Skill | What it does | Changes code? |
 | --- | --- | --- |
 | [`roast-me`](skills/roast-me/SKILL.md) | Evidence-based, savage-but-affectionate roast of your repo — user-invokable only | No (roasts) |
+
+### Workflow & Productivity
+
+| Skill | What it does | Changes code? |
+| --- | --- | --- |
+| [`session-handoff`](skills/session-handoff/SKILL.md) | Captures the current session's summary, key decisions, important files, and open questions into a copy-pasteable handoff block to continue in a new session | No (generates text) |
+| [`youtube-transcript`](skills/youtube-transcript/SKILL.md) | Deterministically downloads transcripts from a YouTube video or playlist (via `yt-dlp`) and produces a detailed summary | No (writes transcripts) |
 
 ## Install
 
