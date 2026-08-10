@@ -5,6 +5,19 @@ description: A collection of on-demand, technology-agnostic skills for AI-assist
 
 # AI Dev Skills
 
+Very useful skills:
+
+```bash
+npx skills add lguz/humanize-writing-skill
+npx skills add mattpocock/skills
+npx skills add coleam00/excalidraw-diagram-skill
+npx skills add bahayonghang/drawio-skills
+npx skills add anthropics/skills --skill docx pdf xlsx pptx
+npx skills add claude-office-skills/skills --skill diagram-creator
+npx skills add jimliu/baoyu-skills --skill baoyu-infographic
+npx impeccable install
+```
+
 A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI-assisted software development. Each skill is a self-contained review/audit you run **manually, whenever you want**, against any codebase. They produce reports and plans (and, where noted, make changes) without being tied to a particular language or framework.
 
 ## Skills
@@ -27,34 +40,12 @@ A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI
 | --- | --- | --- |
 | [`next-feature-opportunities`](skills/next-feature-opportunities/SKILL.md) | Recommends the most impactful next features to build | No (recommends) |
 | [`align-documentation`](skills/align-documentation/SKILL.md) | Updates existing docs in place to match the codebase | Yes (edits docs) |
-<<<<<<< HEAD
-| [`content-humanizer`](skills/content-humanizer/SKILL.md) | Removes AI-generated traces from text for natural, human-sounding writing | Yes (edits text) |
-
-### Planning & Design
-
-| Skill | What it does | Changes code? |
-| --- | --- | --- |
-| [`grilling`](skills/grilling/SKILL.md) | Interviews you relentlessly to stress-test a plan or design before building | No (interviews) |
-| [`grill-me`](skills/grill-me/SKILL.md) | Shortcut that kicks off a `grilling` session | No (interviews) |
-
-### Frontend & Design
-
-| Skill | What it does | Changes code? |
-| --- | --- | --- |
-| [`frontend-design`](skills/frontend-design/SKILL.md) | Creates distinctive, production-grade frontend interfaces with high design quality | Yes (creates code) |
 
 ### Document Automation
 
 | Skill | What it does | Changes code? |
 | --- | --- | --- |
-| [`docx`](skills/docx/SKILL.md) | Create, read, edit, and manipulate Word documents (.docx files) | Yes (creates/edits) |
-| [`pdf`](skills/pdf/SKILL.md) | Process PDFs: extract text, merge, split, fill forms, create, OCR | Yes (creates/edits) |
-| [`pptx`](skills/pptx/SKILL.md) | Create, edit, and analyze PowerPoint presentations (.pptx files) | Yes (creates/edits) |
-| [`xlsx`](skills/xlsx/SKILL.md) | Create, read, edit, and manage Excel spreadsheets (.xlsx, .csv, .tsv files) | Yes (creates/edits) |
-||||||| parent of dbbcd7a (Add 'roast-me' skill for humorous code reviews and update README)
-=======
 | [`roast-me`](skills/roast-me/SKILL.md) | Evidence-based, savage-but-affectionate roast of your repo — user-invokable only | No (roasts) |
->>>>>>> dbbcd7a (Add 'roast-me' skill for humorous code reviews and update README)
 
 ## Install
 
