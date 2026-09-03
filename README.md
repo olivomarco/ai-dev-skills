@@ -22,6 +22,8 @@ You can use `install.sh` to install all of these + my own in your project.
 
 A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI-assisted software development. Each skill is a self-contained review/audit you run **manually, whenever you want**, against any codebase. They produce reports and plans (and, where noted, make changes) without being tied to a particular language or framework.
 
+Use the reusable [sample `AGENTS.md`](sample-AGENTS.md) as a starting point for your repository instructions.
+
 ## Skills
 
 ### Code Quality & Testing
