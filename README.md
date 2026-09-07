@@ -24,6 +24,10 @@ A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI
 
 Use the reusable [sample `AGENTS.md`](sample-AGENTS.md) as a starting point for your repository instructions.
 
+```bash
+curl -o AGENTS.md https://raw.githubusercontent.com/olivomarco/ai-dev-skills/main/sample-AGENTS.md
+```
+
 ## Skills
 
 ### Code Quality & Testing
