@@ -11,7 +11,7 @@ Very useful skills:
 npx skills add lguz/humanize-writing-skill
 npx skills add mattpocock/skills
 npx skills add coleam00/excalidraw-diagram-skill
-npx skills add bahayonghang/drawio-skills
+npx skills add Agents365-ai/drawio-skill
 npx skills add anthropics/skills --skill docx pdf xlsx pptx skill-creator
 npx skills add claude-office-skills/skills --skill diagram-creator
 npx skills add jimliu/baoyu-skills --skill baoyu-infographic
@@ -23,6 +23,12 @@ npx impeccable install
 You can use `install.sh` to install all of these + my own in your project.
 
 A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI-assisted software development. Each skill is a self-contained review/audit you run **manually, whenever you want**, against any codebase. They produce reports and plans (and, where noted, make changes) without being tied to a particular language or framework.
+
+Use the reusable [sample `AGENTS.md`](sample-AGENTS.md) as a starting point for your repository instructions.
+
+```bash
+curl -o AGENTS.md https://raw.githubusercontent.com/olivomarco/ai-dev-skills/main/sample-AGENTS.md
+```
 
 ## Skills
 
