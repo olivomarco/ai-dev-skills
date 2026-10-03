@@ -8,16 +8,27 @@ description: A collection of on-demand, technology-agnostic skills for AI-assist
 Very useful skills:
 
 ```bash
+# Anti AI-slop
 npx skills add lguz/humanize-writing-skill
+npx skills add cursor/plugins --skill unslop
+
+# Coding skills
 npx skills add mattpocock/skills
+npx skills add humanlayer/skills --skill show-me
+npx skills add anthropics/skills --skill skill-creator
+
+# Skills for drawings/diagrams
 npx skills add coleam00/excalidraw-diagram-skill
 npx skills add Agents365-ai/drawio-skill
-npx skills add anthropics/skills --skill docx pdf xlsx pptx skill-creator
 npx skills add claude-office-skills/skills --skill diagram-creator
 npx skills add jimliu/baoyu-skills --skill baoyu-infographic
-npx skills add humanlayer/skills --skill show-me
-npx skills add cursor/plugins --skill unslop
+
+# General productivity skills
+npx skills add anthropics/skills --skill docx pdf xlsx pptx
+
+# Graphics and animations
 npx impeccable install
+npx skills add emilkowalski/skills
 ```
 
 You can use `install.sh` to install all of these + my own in your project.
