@@ -15,6 +15,8 @@ npx skills add bahayonghang/drawio-skills
 npx skills add anthropics/skills --skill docx pdf xlsx pptx skill-creator
 npx skills add claude-office-skills/skills --skill diagram-creator
 npx skills add jimliu/baoyu-skills --skill baoyu-infographic
+npx skills add humanlayer/skills --skill show-me
+npx skills add cursor/plugins --skill unslop
 npx impeccable install
 ```
 
