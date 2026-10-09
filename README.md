@@ -22,6 +22,7 @@ npx skills add coleam00/excalidraw-diagram-skill
 npx skills add Agents365-ai/drawio-skill
 npx skills add claude-office-skills/skills --skill diagram-creator
 npx skills add jimliu/baoyu-skills --skill baoyu-infographic
+npx skills add cathrynlavery/diagram-design
 
 # General productivity skills
 npx skills add anthropics/skills --skill docx pdf xlsx pptx
