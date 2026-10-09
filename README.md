@@ -10,7 +10,7 @@ Very useful skills:
 ```bash
 # Anti AI-slop
 npx skills add lguz/humanize-writing-skill
-npx skills add cursor/plugins --skill unslop
+npx skills add cursor/plugins --skill unslop --full-depth
 
 # Coding skills
 npx skills add mattpocock/skills
