@@ -11,6 +11,7 @@ Very useful skills:
 # Anti AI-slop
 npx skills add lguz/humanize-writing-skill
 npx skills add cursor/plugins --skill unslop --full-depth
+npx skills add blader/humanizer
 
 # Coding skills
 npx skills add mattpocock/skills
