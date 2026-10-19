@@ -1,31 +1,70 @@
 ---
 name: AI Dev Skills
-description: A collection of on-demand, technology-agnostic skills for AI-assisted development reviews and audits.
+description: An Agent Plugins bundle of on-demand skills for development reviews, documentation, content editing, and workflows.
 ---
 
 # AI Dev Skills
 
-Very useful skills:
+On-demand skills for code reviews, testing, documentation, and workflows.
+Use them with any technology stack.
+
+## Install
+
+### This repository's skills
+
+**GitHub Copilot CLI:** install the whole [Agent Plugins](https://agent-plugins.org/) bundle.
+Requires a current CLI with plugin support.
 
 ```bash
-# Anti AI-slop
+copilot plugin install olivomarco/ai-dev-skills
+```
+
+Start a new Copilot session after installation. No marketplace registration is needed.
+
+**Individual skills or other agents:** use the [`skills` CLI](https://github.com/vercel-labs/skills)
+for Claude Code, Codex, Cursor, OpenCode, and other supported agents.
+
+```bash
+# Choose skills and target agents interactively
+npx skills add olivomarco/ai-dev-skills
+
+# Install one skill
+npx skills add olivomarco/ai-dev-skills --skill humanize-content
+
+# List available skills
+npx skills add olivomarco/ai-dev-skills --list
+
+# Install all skills to Claude Code without prompts
+npx skills add olivomarco/ai-dev-skills --all -a claude-code -y
+```
+
+Choose one installation method per agent to avoid loading duplicate copies of
+the same skills.
+
+### Optional third-party skills
+
+Install these separately; **they are not included in this repository's plugin**.
+Choose the ones you need.
+
+```bash
+# Content humanization alternatives
 npx skills add lguz/humanize-writing-skill
 npx skills add cursor/plugins --skill unslop --full-depth
 npx skills add blader/humanizer
 
-# Coding skills
+# Coding
 npx skills add mattpocock/skills
 npx skills add humanlayer/skills --skill show-me
 npx skills add anthropics/skills --skill skill-creator
 
-# Skills for drawings/diagrams
+# Drawings and diagrams
 npx skills add coleam00/excalidraw-diagram-skill
 npx skills add Agents365-ai/drawio-skill
 npx skills add claude-office-skills/skills --skill diagram-creator
 npx skills add jimliu/baoyu-skills --skill baoyu-infographic
 npx skills add cathrynlavery/diagram-design
 
-# General productivity skills
+# Documents, PDFs, spreadsheets, and slides
 npx skills add anthropics/skills --skill docx pdf xlsx pptx
 
 # Graphics and animations
@@ -33,15 +72,28 @@ npx impeccable install
 npx skills add emilkowalski/skills
 ```
 
-You can use `install.sh` to install all of these + my own in your project.
-
-A collection of **technology-agnostic** [Agent Skills](https://skills.sh) for AI-assisted software development. Each skill is a self-contained review/audit you run **manually, whenever you want**, against any codebase. They produce reports and plans (and, where noted, make changes) without being tied to a particular language or framework.
-
-Use the reusable [sample `AGENTS.md`](sample-AGENTS.md) as a starting point for your repository instructions.
+### Manage the Copilot plugin
 
 ```bash
-curl -o AGENTS.md https://raw.githubusercontent.com/olivomarco/ai-dev-skills/main/sample-AGENTS.md
+copilot plugin list
+copilot plugin update ai-dev-skills
 ```
+
+## How to run a skill
+
+Ask your agent for the task:
+
+- "Find duplicated code in `src/api`."
+- "Improve unit-test coverage for the payments module."
+- "Humanize this draft."
+
+Each skill's `description` lists its triggers. Invoke `roast-me` explicitly
+through your agent's skill command.
+
+`humanize-content` confirms the content type, voice, target, and delivery before
+editing on every run. Voices: conversational, professional, direct, or
+personal/editorial. It returns a rewrite or edits files in place while preserving
+meaning and technical syntax; it does not promise AI-detector evasion.
 
 ## Skills
 
@@ -49,10 +101,7 @@ curl -o AGENTS.md https://raw.githubusercontent.com/olivomarco/ai-dev-skills/mai
 
 | Skill | What it does | Changes code? |
 | --- | --- | --- |
-| [`security-review`](skills/security-review/SKILL.md) | OWASP-aligned security audit with a prioritized remediation plan | No (reports) |
-| [`functional-review`](skills/functional-review/SKILL.md) | Reviews existing functionality for correctness, broken flows, and missing states | No (reports) |
 | [`dry-consolidation`](skills/dry-consolidation/SKILL.md) | Finds duplication/inconsistency and proposes shared building blocks | No (reports) |
-| [`refactoring-opportunities`](skills/refactoring-opportunities/SKILL.md) | Identifies code smells and tech debt with a prioritized refactor plan | No (reports) |
 | [`unit-test-coverage`](skills/unit-test-coverage/SKILL.md) | Audits coverage gaps and writes new unit tests | Yes (adds tests) |
 | [`stale-code-check`](skills/stale-code-check/SKILL.md) | Detects dead/obsolete code, deps, config, and assets | No (reports) |
 | [`ai-slop-detector`](skills/ai-slop-detector/SKILL.md) | Detects, prevents, and remediates low-quality AI-generated code | No (reports) |
@@ -63,6 +112,7 @@ curl -o AGENTS.md https://raw.githubusercontent.com/olivomarco/ai-dev-skills/mai
 | --- | --- | --- |
 | [`next-feature-opportunities`](skills/next-feature-opportunities/SKILL.md) | Recommends the most impactful next features to build | No (recommends) |
 | [`align-documentation`](skills/align-documentation/SKILL.md) | Updates existing docs in place to match the codebase | Yes (edits docs) |
+| [`humanize-content`](skills/humanize-content/SKILL.md) | Humanizes prose with scope confirmation every run, four voice presets, and a meaning-preservation check | No code; optionally edits prose files |
 
 ### Fun
 
@@ -74,58 +124,9 @@ curl -o AGENTS.md https://raw.githubusercontent.com/olivomarco/ai-dev-skills/mai
 
 | Skill | What it does | Changes code? |
 | --- | --- | --- |
-| [`session-handoff`](skills/session-handoff/SKILL.md) | Captures the current session's summary, key decisions, important files, and open questions into a copy-pasteable handoff block to continue in a new session | No (generates text) |
 | [`youtube-transcript`](skills/youtube-transcript/SKILL.md) | Deterministically downloads transcripts from a YouTube video or playlist (via `yt-dlp`) and produces a detailed summary | No (writes transcripts) |
 
-## Install
-
-These skills are installed with the [`skills`](https://www.npmjs.com/package/skills) CLI, which supports Claude Code, Codex, Cursor, OpenCode, and many more agents.
-
-```bash
-# List the skills in this repo
-npx skills add olivomarco/ai-dev-skills --list
-
-# Install all skills (interactive agent/scope selection)
-npx skills add olivomarco/ai-dev-skills
-
-# Install a specific skill
-npx skills add olivomarco/ai-dev-skills --skill security-review
-
-# Install everything to a specific agent, non-interactively
-npx skills add olivomarco/ai-dev-skills --all -a claude-code -y
-```
-
-> Replace `olivomarco/ai-dev-skills` with the actual `owner/repo` if you fork or rename it.
-
-Use a skill once without installing:
-
-```bash
-npx skills use olivomarco/ai-dev-skills --skill refactoring-opportunities --agent claude-code
-```
-
-## How to run a skill
-
-Once installed, just ask your agent in natural language, e.g.:
-
-- "Run a security review on `src/api`."
-- "Find refactoring opportunities in this repo."
-- "Improve unit-test coverage for the payments module."
-- "Align the docs with the current codebase."
-
-Each skill's `description` lists the trigger phrases that activate it.
-
-## Repository layout
-
-```
-ai-dev-skills/
-├── README.md
-├── skills.sh.json          # optional grouping metadata for skills.sh
-└── skills/
-    └── <skill-name>/
-        └── SKILL.md         # one skill per directory
-```
-
-## Authoring conventions
+## Add a skill
 
 Each skill is a directory under `skills/` containing a `SKILL.md` with YAML frontmatter:
 
@@ -140,6 +141,32 @@ metadata:
 ---
 ```
 
-The body is Markdown instructions: a **Mission**, **Scope & Preconditions**, a **Workflow**, **Output Expectations**, and **Quality Assurance**. Skills here are written to be technology-agnostic — they detect the stack first and adapt their checks to whatever language/framework is in use.
+1. Create `skills/<skill-name>/SKILL.md` with the frontmatter above and sections for
+   mission, scope, workflow, output, and quality checks. Keep it technology-agnostic;
+   put supporting references, scripts, and evaluations in the same skill directory.
+2. Add it to the tables above and a group in `skills.sh.json`.
+3. Preview locally from the repository root:
 
-To scaffold a new skill: `npx skills init skills/<new-skill-name>`.
+   ```bash
+   copilot --plugin-dir . plugin list
+   copilot --plugin-dir .
+   ```
+
+4. For a release, bump the bundle version in `plugin.json` and the changed skill's
+   `metadata.version`, then commit and push to the default branch.
+
+Skills under `skills/` are discovered automatically; no per-skill registration or
+package publishing is needed. Uncommitted changes are available only in the local
+preview, not through GitHub installation.
+
+If you fork the repo, update `plugin.json`'s author and repository fields and the
+installation commands in this README.
+
+## Repository instructions template
+
+Use the reusable [sample `AGENTS.md`](sample-AGENTS.md) as a starting point for
+your repository instructions. It is not applied automatically by the plugin.
+
+```bash
+curl -o AGENTS.md https://raw.githubusercontent.com/olivomarco/ai-dev-skills/main/sample-AGENTS.md
+```
