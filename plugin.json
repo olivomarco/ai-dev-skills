@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ai-dev-skills",
+  "version": "1.0.0",
+  "description": "On-demand skills for code reviews, testing, documentation, content editing, and developer workflows.",
+  "author": {
+    "name": "olivomarco"
+  },
+  "repository": "https://github.com/olivomarco/ai-dev-skills",
+  "keywords": ["development", "code-review", "documentation", "humanization"]
+}

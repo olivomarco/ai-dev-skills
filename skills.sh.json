@@ -4,11 +4,9 @@
   "groupings": [
     {
       "title": "Code Quality",
-      "description": "Reviews that surface bugs, duplication, and refactoring opportunities in existing code.",
+      "description": "Reviews that find duplication, stale code, and low-quality AI-generated code.",
       "skills": [
-        "functional-review",
         "dry-consolidation",
-        "refactoring-opportunities",
         "stale-code-check",
         "ai-slop-detector"
       ]
@@ -22,26 +20,25 @@
       ]
     },
     {
-      "title": "Security & Testing",
-      "description": "Audits that harden the codebase and raise confidence through tests.",
+      "title": "Testing",
+      "description": "Coverage audits and focused unit tests.",
       "skills": [
-        "security-review",
         "unit-test-coverage"
       ]
     },
     {
       "title": "Product & Docs",
-      "description": "Forward-looking product recommendations and documentation alignment.",
+      "description": "Product recommendations, documentation alignment, and voice-aware prose editing.",
       "skills": [
         "next-feature-opportunities",
-        "align-documentation"
+        "align-documentation",
+        "humanize-content"
       ]
     },
     {
       "title": "Workflow & Productivity",
-      "description": "Helpers that streamline your dev workflow, like handing off context between sessions.",
+      "description": "Video and playlist transcripts with summaries.",
       "skills": [
-        "session-handoff",
         "youtube-transcript"
       ]
     },
