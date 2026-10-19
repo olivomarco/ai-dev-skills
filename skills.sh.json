@@ -15,8 +15,7 @@
       "title": "Planning & Design",
       "description": "Interactive sessions that stress-test plans and designs before you build.",
       "skills": [
-        "stale-code-check",
-        "roast-me"
+        "stale-code-check"
       ]
     },
     {
@@ -40,13 +39,6 @@
       "description": "Video and playlist transcripts with summaries.",
       "skills": [
         "youtube-transcript"
-      ]
-    },
-    {
-      "title": "Fun",
-      "description": "Lighthearted, user-invokable takes on your repo.",
-      "skills": [
-        "roast-me"
       ]
     }
   ]
