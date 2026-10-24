@@ -1,6 +1,6 @@
 # Content Types
 
-Read the section matching the confirmed content type. These are genre-specific editing choices; the skill's preservation rules remain authoritative.
+Read the section matching the confirmed content type for drafting or revision. These are genre-specific choices; the skill's reader-need test and preservation rules remain authoritative.
 
 ## Technical/docs
 

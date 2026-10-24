@@ -93,7 +93,7 @@ copilot plugin update ai-dev-skills
 | --- | --- | --- |
 | [`next-feature-opportunities`](skills/next-feature-opportunities/SKILL.md) | Recommends the most impactful next features to build | No (recommends) |
 | [`align-documentation`](skills/align-documentation/SKILL.md) | Updates existing docs in place to match the codebase | Yes (edits docs) |
-| [`humanize-content`](skills/humanize-content/SKILL.md) | Humanizes prose with scope confirmation every run, four voice presets, and a meaning-preservation check | No code; optionally edits prose files |
+| [`humanize-content`](skills/humanize-content/SKILL.md) | Revises prose or drafts from supplied facts: four voices, confirmed scope, and only what the reader needs | No code; optionally edits prose files |
 
 ### Workflow & Productivity
 

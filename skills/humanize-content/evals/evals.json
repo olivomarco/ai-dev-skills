@@ -123,6 +123,52 @@
         "Preserves possible staleness, the 30-second upper bound, and the failed-request exclusion.",
         "Returns only the edited content."
       ]
+    },
+    {
+      "id": 11,
+      "name": "lean-update-in-every-voice",
+      "prompt": "Humanize this update for the engineers using our preview:\n\nI wanted to take a moment to provide an update regarding the preview. The preview will close on Friday at 17:00 UTC. This means that Friday at 17:00 UTC is when access to the preview will end. Please export any reports you need before then. Reports that have already been exported will remain available locally. We understand that clear communication is important, and we want to ensure everyone is aware of this upcoming change. To reiterate, please make sure you export the reports you need before the preview closes.",
+      "intake_reply": "Revise, email/message, professional, the pasted update only, return the rewrite. The purpose is to tell preview users when access ends and what they need to do.",
+      "voice_variants": ["conversational", "professional", "direct", "personal/editorial"],
+      "variant_instructions": "Repeat in fresh conversations, replacing the voice in intake_reply with each voice_variants value.",
+      "expected_output": "A brief update containing the closure time, export action, and local-report reassurance, each stated once.",
+      "files": [],
+      "assertions": [
+        "States that preview access ends on Friday at 17:00 UTC and asks users to export needed reports before then.",
+        "Preserves that already-exported reports remain available locally.",
+        "States each fact or action once and removes generic communication framing and the recap.",
+        "Returns only the update, without invented commitments, extra deliverables, or an explanation of the edits."
+      ]
+    },
+    {
+      "id": 12,
+      "name": "draft-only-needed-facts",
+      "prompt": "Write a human-sounding launch email from these notes for existing workspace admins. CSV export is available now on paid plans. Start it from Settings > Export. Exports include active records only; archived records are excluded. No action is required unless an admin wants a CSV. Background for you: the internal project was called Cedar, the team had six planning meetings, and the office chairs were replaced last month. The email's only purpose is to tell admins what is available, who can use it, and how.",
+      "intake_reply": "Draft from the supplied notes, email/message, conversational, the supplied notes only, return the email. Existing workspace admins are the audience; the purpose is the availability, eligibility, and export steps stated above.",
+      "expected_output": "A short email with availability, paid-plan eligibility, navigation, record limitation, and optional action; no internal background or invented launch promises.",
+      "files": [],
+      "assertions": [
+        "Produces a draft after confirmation rather than requiring an existing prose passage.",
+        "Includes CSV availability now, paid-plan eligibility, and the Settings > Export path.",
+        "Keeps the active-record-only scope, archived-record exclusion, and optional nature of the action.",
+        "Omits Cedar, planning meetings, and office chairs; adds no unsupported benefit, support promise, or follow-up task.",
+        "Returns only the email without repeating the announcement in a recap."
+      ]
+    },
+    {
+      "id": 13,
+      "name": "concision-without-losing-operational-caveats",
+      "prompt": "Humanize these instructions for operators:\n\nBefore upgrading, back up `config.yml`. Stop the worker before running `migrate --apply`. The migration may take up to 10 minutes. Keep the worker stopped until migration finishes. If migration fails, restore `config.yml` before restarting the worker. The migration changes the schema and cannot be undone by installing the old binary.",
+      "intake_reply": "Revise, technical/docs, direct, the pasted instructions only, return the rewrite. Operators need to perform the upgrade safely.",
+      "expected_output": "Readable operational instructions, potentially unchanged, retaining every prerequisite, condition, command, timing bound, and rollback limitation.",
+      "files": [],
+      "assertions": [
+        "Preserves backup before upgrade, stopping the worker before migration, and keeping it stopped until migration finishes.",
+        "Preserves possible duration of up to 10 minutes and restoring config before restart if migration fails.",
+        "Preserves that the schema change cannot be undone by installing the old binary.",
+        "Keeps `config.yml` and `migrate --apply` unchanged, using readable instructions rather than compressed fragments.",
+        "Adds no preamble, redundant summary, or extra operational step."
+      ]
     }
   ]
 }
