@@ -9,9 +9,11 @@ cost without a meaningful benefit.
 Apply these rules to technical documentation, session kits, runbooks, Markdown,
 slide content, and user-facing explanations.
 
-**Humanization:** When the user explicitly asks to humanize existing prose, invoke
-`/humanize-content` and follow its intake before editing. For other writing tasks,
-use the rules below directly.
+**Tone of voice:** Before writing or revising prose, including user-facing
+replies, invoke the `humanize-content` skill and follow the root
+`TONE-OF-VOICE.md`. If it is missing, the skill asks for the voice once and creates
+it. Reuse the saved voice on later runs; keep task-only overrides out of the file.
+The rules below supplement the saved voice.
 
 ### Plain language
 

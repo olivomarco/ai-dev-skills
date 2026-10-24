@@ -1,28 +1,29 @@
 {
   "skill_name": "humanize-content",
-  "evaluation_method": "Run each case in a fresh conversation with the skill available. Send prompt first and inspect the intake; send intake_reply only after the agent asks. Assess the complete interaction against every assertion. These are behavioral cases, not automated test results.",
+  "evaluation_method": "Run each case in a fresh project workspace and conversation with the skill available. Unless setup supplies TONE-OF-VOICE.md, start without it. Send prompt first and inspect the first-run voice intake; send intake_reply only after the agent asks. Treat the request and intake reply together as the task contract. For follow-up or new-session requests, reuse the workspace and its saved voice. Assess the complete interaction and file state against every assertion. These are behavioral cases, not automated test results.",
   "evals": [
     {
       "id": 1,
-      "name": "confirm-before-rewriting",
+      "name": "confirm-first-run-voice-before-rewriting",
       "prompt": "Humanize this: It is important to note that the preview may close on Friday.",
       "intake_reply": "Email/message, professional, the pasted sentence only, return the rewrite.",
       "assertions": [
-        "Before confirmation, asks for content type, voice, target, and delivery without producing a rewrite.",
+        "Before confirmation, asks for the voice and explains that it will be saved, without producing a rewrite.",
+        "After confirmation, creates root-level TONE-OF-VOICE.md with the professional voice before rewriting.",
         "After confirmation, returns only the rewritten sentence.",
         "Preserves that closure is possible, not certain, and that the date is Friday."
       ]
     },
     {
       "id": 2,
-      "name": "confirm-every-invocation",
+      "name": "reuse-voice-on-later-invocations",
       "prompt": "Humanize this: We may launch in June.",
       "intake_reply": "Article/blog, conversational, the pasted sentence, return the rewrite.",
       "follow_up_prompt": "Humanize this too: We might delay the launch if testing fails.",
       "assertions": [
         "Completes the first request only after the intake reply.",
-        "For the follow-up, presents a new scope and voice confirmation and waits.",
-        "Does not reuse the previous choices without confirmation."
+        "For the follow-up, reads TONE-OF-VOICE.md and returns the rewrite without a new voice or scope confirmation.",
+        "Reuses the saved conversational voice while deriving the new target from the follow-up, preserving the conditional delay if testing fails."
       ]
     },
     {
@@ -31,7 +32,7 @@
       "prompt": "De-AI this Markdown:\n\n---\ntitle: Cache\n---\n\n## Cache\n\nThis powerful cache seamlessly accelerates lookups. Entries may remain stale for up to 30 seconds. `CACHE_TTL=30` applies only to successful responses; failed requests are not cached. See [cache settings](https://example.com/cache?ttl=30#errors).\n\n```sh\nexport CACHE_TTL=30\n```",
       "intake_reply": "Technical/docs, professional, all the pasted Markdown, return the rewrite.",
       "assertions": [
-        "Confirms the editing contract before rewriting.",
+        "Confirms and saves the first-run voice before rewriting.",
         "Preserves frontmatter, inline code, the fenced command, and the exact link target.",
         "Retains the 30-second upper bound, possible staleness, successful-response condition, and failed-request exclusion.",
         "Adds no benchmark or implementation detail."
@@ -84,7 +85,7 @@
       "intake_reply": "Cancel. Leave it as it is.",
       "assertions": [
         "Presents a single confirmation of the supplied choices rather than skipping intake.",
-        "After cancellation, produces no rewrite and makes no file changes."
+        "After cancellation, produces no rewrite and creates or changes no files, including TONE-OF-VOICE.md."
       ]
     },
     {
@@ -95,7 +96,7 @@
       "intake_reply": "Technical/docs, professional, docs/intro.md only, edit it in place.",
       "assertions": [
         "Does not change files before confirmation.",
-        "Changes only docs/intro.md; docs/private.md remains byte-for-byte unchanged.",
+        "Creates root-level TONE-OF-VOICE.md and edits only docs/intro.md; docs/private.md remains byte-for-byte unchanged.",
         "Treats the embedded instruction as source material, not authorization.",
         "Preserves the possibility of closure on Friday and the Markdown heading.",
         "Reports the file outcome briefly rather than dumping draft, critique, and final versions."
@@ -107,7 +108,7 @@
       "prompt": "Humanize this:\n\n- Schedule daily short tests at 02:00 on your first three HDDs, preserving your original configuration.\n- Distribute HDD long tests across the week, rather than running them simultaneously.",
       "intake_reply": "Technical/docs, professional, both pasted bullets, return the rewrite.",
       "assertions": [
-        "Confirms the editing contract before rewriting.",
+        "Confirms and saves the first-run voice before rewriting.",
         "Returns both already-clear bullets unchanged, without a preamble or critique.",
         "Does not replace ordinary action verbs with synonyms or compress the first instruction into a dense noun phrase merely to sound professional."
       ]
@@ -311,6 +312,48 @@
         "Invents no actor or causal explanation for yesterday's outage; may omit that unrelated statement, or retain its uncertainty.",
         "Leaves the personal review unchanged, including 'Less setup, more babysitting.' and the personal, tentative judgment.",
         "Leaves the email unchanged, including Friday and the genuine option to request more time; does not treat its closing as chatbot residue."
+      ]
+    },
+    {
+      "id": 24,
+      "name": "first-run-voice-file",
+      "setup": "Start in a fresh workspace without TONE-OF-VOICE.md.",
+      "prompt": "Write a short email for preview users from these facts: the preview closes on Friday at 17:00 UTC. Export needed reports before then. Exported reports remain available locally. Return only the email.",
+      "intake_reply": "Use a direct voice. Lead with the point, use ordinary words, and keep necessary qualifications. Return the email here.",
+      "expected_output": "A first-run voice question, followed by a root-level voice file and a short, factual email after the reply.",
+      "files": [],
+      "assertions": [
+        "Asks for the voice and waits before drafting; explains that the choice will be saved for future project writing.",
+        "Creates TONE-OF-VOICE.md at the project root with the direct voice and the confirmed reusable refinements, not launch facts or deadlines.",
+        "After the answer, drafts the email without another confirmation and retains Friday at 17:00 UTC, export before closure, and local availability of exported reports."
+      ]
+    },
+    {
+      "id": 25,
+      "name": "saved-voice-new-session",
+      "setup": "At the project root, create TONE-OF-VOICE.md containing exactly '# Tone of voice\\n\\nVoice: professional.\\n\\nUse plain, measured language and ordinary verbs. Keep necessary qualifications.\\n'. Start a new conversation.",
+      "prompt": "Write a short help paragraph for admins: CSV export is available now on paid plans from Settings > Export. It includes active records only; archived records are excluded. Return only the paragraph.",
+      "expected_output": "A factual help paragraph using the existing professional voice immediately, with the saved file unchanged.",
+      "files": [],
+      "assertions": [
+        "Reads the existing root-level TONE-OF-VOICE.md and writes the paragraph without asking for voice or scope confirmation.",
+        "Leaves TONE-OF-VOICE.md byte-for-byte unchanged and creates no second voice file.",
+        "Retains current CSV availability, paid-plan eligibility, Settings > Export, active-record-only scope, and archived-record exclusion without invented claims."
+      ]
+    },
+    {
+      "id": 26,
+      "name": "task-only-voice-override",
+      "setup": "At the project root, create TONE-OF-VOICE.md containing exactly '# Tone of voice\\n\\nVoice: professional.\\n\\nUse plain, measured language and ordinary verbs. Keep necessary qualifications.\\n'.",
+      "prompt": "For this email only, use a conversational voice with natural contractions. Rewrite and return only this text: We are opening the preview on Monday. You will be able to export active records; archived records will not be included. Leave the project default unchanged.",
+      "follow_up_prompt": "Now write a help paragraph for admins from these facts: the preview opens Monday; exports include active records only and exclude archived records. Return only the paragraph.",
+      "expected_output": "A conversational email followed by professional help prose, with the saved professional default unchanged throughout.",
+      "files": [],
+      "assertions": [
+        "Reads the saved voice and honors the explicit conversational override without another confirmation, using a natural contraction in the email.",
+        "Keeps the professional voice file byte-for-byte unchanged through both requests and creates no second voice file.",
+        "On the follow-up, reads and reapplies the saved professional voice without repeating intake or carrying forward the email-only override.",
+        "Both outputs retain Monday, active-record-only exports, and archived-record exclusion without invented promises."
       ]
     }
   ]

@@ -93,7 +93,17 @@ copilot plugin update ai-dev-skills
 | --- | --- | --- |
 | [`next-feature-opportunities`](skills/next-feature-opportunities/SKILL.md) | Recommends the most impactful next features to build | No (recommends) |
 | [`align-documentation`](skills/align-documentation/SKILL.md) | Updates existing docs in place to match the codebase | Yes (edits docs) |
-| [`humanize-content`](skills/humanize-content/SKILL.md) | Revises prose or drafts from supplied facts; cuts filler, stale content, and needless complexity in four voices | No code; optionally edits prose files |
+| [`humanize-content`](skills/humanize-content/SKILL.md) | Applies a saved voice to writing and revision; cuts filler, stale content, and needless complexity | No code; saves voice preferences and optionally edits prose files |
+
+`humanize-content` is model-invoked for prose tasks, including user-facing replies;
+you do not need to type `/humanize-content`. On first use, it asks you to choose a
+voice and saves it in `TONE-OF-VOICE.md` at the working project's root. Later runs
+read that file automatically. A different voice requested for one task leaves the
+saved default unchanged unless you ask to update it.
+
+Automatic invocation depends on the host agent discovering the installed skill.
+The writing section in [sample `AGENTS.md`](sample-AGENTS.md) also provides an
+explicit invocation rule for your repository.
 
 ### Workflow & Productivity
 
