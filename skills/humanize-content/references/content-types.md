@@ -4,7 +4,7 @@ Read the section matching the confirmed content type for drafting or revision. T
 
 ## Technical/docs
 
-Favor precise explanations of behavior, prerequisites, and limitations. Keep domain terms that distinguish real concepts. Separate an instruction from its rationale when that improves scanning. Preserve the order of operational steps.
+Favor precise explanations of behavior, prerequisites, and limitations. Keep domain terms that distinguish real concepts. Expand compressed wording when readers would otherwise have to infer an actor, condition, or sequence. Separate an instruction from its rationale when that improves scanning. Preserve the order of operational steps.
 
 Professional technical writing can use ordinary verbs and explanatory phrasing. Keep clear instructions such as "Schedule daily short tests at 02:00 on your first three HDDs, preserving your original configuration." Do not replace them with denser wording such as "Retain your original daily short-test schedule of 02:00 for the first three HDDs" merely to sound more formal. Likewise, "Distribute HDD long tests across the week, rather than running them simultaneously" does not need a synonym swap to "Stagger." The original and the alternative may both be valid; without a clear reader benefit, retain the original.
 
@@ -34,7 +34,7 @@ Both acceptable dates survive. The shorter version still asks rather than demand
 
 ## Article/blog
 
-Make the line of argument easy to follow. Remove introductions and conclusions that merely repeat the thesis. Retain qualifications, attributed views, and contrasts that the argument depends on. A stronger opening can foreground an existing point without inventing a hook.
+Make the line of argument easy to follow. Remove introductions and conclusions that merely repeat the thesis. Retain qualifications, attributed views, and contrasts that the argument depends on, including transitions that make those relationships clear. A stronger opening can foreground an existing point without inventing a hook.
 
 **Source**
 

@@ -1,0 +1,30 @@
+{
+  "skill_name": "dry-consolidation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Find the best DRY consolidation in this complete source snapshot. Report only; do not refactor or inspect unrelated workspace files. All three modules belong to the same frontend package and follow the same USD display contract.\n\nsrc/shared/money.js:\n```js\nexport function formatUSD(cents) {\n  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);\n}\n```\n\nsrc/receipt.js:\n```js\nexport function receiptPrice(cents) {\n  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);\n}\n```\n\nsrc/refund.js:\n```js\nexport function refundPrice(cents) {\n  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);\n}\n```\n\nThe receipt and refund function exports are existing public contracts and must remain available.",
+      "expected_output": "A concise consolidation report recommends delegating both public functions to the existing formatUSD helper, with precise locations and behavior-preserving checks rather than a new abstraction.",
+      "files": [],
+      "expectations": [
+        "Identifies the receipt and refund formatting implementations as one duplication cluster and cites both locations.",
+        "Finds and reuses src/shared/money.js rather than proposing a second currency helper.",
+        "Preserves the receiptPrice and refundPrice exports in the migration plan.",
+        "Includes output-equivalence checks for representative cent values and notes two consumer implementations to migrate.",
+        "Does not refactor files or propose a configurable multi-currency framework for this fixed USD contract."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Check this complete snapshot for worthwhile consolidation. We suspect every repeated 30 should become one shared constant, but please challenge that idea if the semantics do not support it. Report only.\n\nsrc/session.js:\n```js\nexport const sessionRetentionDays = 30;\n```\n\nsrc/retry.js:\n```js\nexport const retryDelaySeconds = 30;\n```\n\nThe product policy owns session retention; the transport policy owns retry delay. They change independently. generated/client-a.js and generated/client-b.js are identical wrappers generated from templates/client.tpl; each wrapper is a required standalone distribution entry. The template contains one wrapper definition. vendor/ contains third-party copies. There is no other maintained source in scope.",
+      "expected_output": "A justified no-consolidation result keeps independent domain constants separate and treats generated/vendor copies according to ownership instead of manufacturing a shared abstraction.",
+      "files": [],
+      "expectations": [
+        "Explains that retention days and retry seconds represent independent rules despite sharing the literal 30.",
+        "Does not recommend a shared constant coupling the session and transport policies.",
+        "Traces generated wrapper duplication to the single template and does not recommend hand-editing generated or vendor internals.",
+        "States that no supported consolidation is warranted within the supplied scope rather than inventing findings."
+      ]
+    }
+  ]
+}

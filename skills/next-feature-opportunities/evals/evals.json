@@ -1,0 +1,31 @@
+{
+  "skill_name": "next-feature-opportunities",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "What should we improve next for researchers who manage projects in this app? Focus on the projects screen; recommend only, with no implementation. This is the complete scoped snapshot, not a request to audit the host workspace. We have no usage analytics or competitor research.\n\nREADME.md says CSV export is planned. Current source takes precedence for implemented capabilities:\n\nsrc/projects/load.js:\n```js\nexport async function loadProjects(api) {\n  try { return await api.listProjects(); }\n  catch { return []; }\n}\n```\n\nsrc/projects/view.js:\n```js\nexport function projectList(items) {\n  return items.length ? items.map(x => x.name).join('\\n') : 'No projects yet';\n}\nexport const exportButton = { label: 'Export CSV', action: '/projects/export.csv' };\n```\n\nsrc/routes.js:\n```js\nexport const routes = {\n  '/projects': listProjects,\n  '/projects/export.csv': exportProjectsCSV\n};\n```\n\nsrc/projects/export.js implements exportProjectsCSV by serializing the current researcher's project names and IDs as CSV. Routes and the export button are wired in the application entry point. The product goal is helping researchers distinguish a genuinely empty project list from a failed load.",
+      "expected_output": "A ranked, architecture-grounded recommendation prioritizes distinguishable load failures and recovery, recognizes CSV export as already implemented, and labels unmeasured product effects as hypotheses.",
+      "files": [],
+      "expectations": [
+        "Recognizes CSV export as implemented despite the stale README and does not list adding CSV export as a missing capability.",
+        "Prioritizes distinguishing load failure from an empty list, citing the catch returning [] and the empty-state rendering.",
+        "Provides a small useful scope, user story, effort rationale, and observable success signal for the leading opportunity.",
+        "Does not claim to have observed the running UI or measured retention, revenue, or user demand.",
+        "Leaves implementation unchanged and avoids filling a five-item quota with unsupported features."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Suggest at most two next improvements for this offline task CLI. The audience is solo users, and the goal is protecting their local task history from accidental loss. No servers, accounts, telemetry, subscriptions, or new dependencies. Recommend only. Use this complete scoped snapshot without searching the host workspace.\n\nREADME.md: The CLI already supports add, list, complete, and case-insensitive text search. tasks.json is the only data store; there is no export or backup command.\n\nsrc/store.js:\n```js\nimport { readFile, writeFile } from 'node:fs/promises';\nexport async function load(path) {\n  return JSON.parse(await readFile(path, 'utf8'));\n}\nexport async function save(path, tasks) {\n  await writeFile(path, JSON.stringify(tasks));\n}\n```\n\nsrc/commands.js wires add and complete to load/save, and list/search to load. The existing architecture is plain Node.js ES modules with one handler per CLI command. We have not supplied user interviews, analytics, or competitor data.",
+      "expected_output": "At most two concrete, offline-compatible data-protection opportunities grounded in the single-file store, with implementation considerations and uncertainty stated rather than generic growth or SaaS ideas.",
+      "files": [],
+      "expectations": [
+        "Recommends at most two improvements serving local data protection, such as safer writes, backups, or export/recovery.",
+        "Grounds each recommendation in the single tasks.json store or load/save behavior and existing command-handler architecture.",
+        "Respects the offline, no-account, no-new-dependency constraints and does not recommend monetization or telemetry features.",
+        "Does not propose search as missing or invent user research, measured loss rates, or competitor facts.",
+        "Provides user value, bounded scope, effort or complexity rationale, and a success signal without implementing changes."
+      ]
+    }
+  ]
+}

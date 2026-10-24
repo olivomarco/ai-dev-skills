@@ -1,0 +1,31 @@
+{
+  "skill_name": "stale-code-check",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Audit this complete project snapshot for removable code. Report only; do not delete files or inspect the host repository. The app entry point is src/main.js. Consumers outside this project use only the package exports listed below. There are no other scripts, config files, tests, or dynamic loaders.\n\npackage.json:\n```json\n{\"type\":\"module\",\"exports\":{\"./public\":\"./src/public.js\"}}\n```\n\nsrc/main.js:\n```js\nexport async function loadPlugin(name) {\n  return import('./plugins/' + name + '.js');\n}\n```\n\nsrc/plugins/csv.js:\n```js\nexport function parse(text) { return text.split(','); }\n```\n\nsrc/public.js:\n```js\nexport function version() { return '1'; }\n```\n\nsrc/legacy-total.js:\n```js\nexport function legacyTotal(values) { return values.reduce((a, b) => a + b, 0); }\n```\n\nOnly these five files exist in the supplied project. loadPlugin('csv') is an active supported runtime call.",
+      "expected_output": "An evidence-based cleanup report retains dynamically loaded and publicly exported modules while identifying the genuinely orphaned legacy module and the checks needed for its removal.",
+      "files": [],
+      "expectations": [
+        "Identifies src/legacy-total.js as the supported orphan candidate with evidence based on the complete supplied scope.",
+        "Keeps src/plugins/csv.js because the dynamic loader reaches it.",
+        "Keeps src/public.js because package exports expose it to external consumers.",
+        "Assigns risk and confidence to the retained finding and proposes verification before removal.",
+        "Makes no deletions and does not equate a missing static importer with proof of disuse."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Check this supplied snapshot for stale dependencies and migrations. Report only, stay offline, and use the cached registry data as supplied evidence rather than claiming a live lookup.\n\npackage.json:\n```json\n{\"scripts\":{\"build\":\"fixture-build src --out dist\"},\"devDependencies\":{\"fixture-build\":\"^2.0.0\"}}\n```\n\npackage-lock.json records node_modules/fixture-build version 2.1.4. .github/workflows/build.yml runs npm ci followed by npm run build. No application module imports fixture-build.\n\nCached registry snapshot: fixture-build latest is 3.0.0, version 2.1.4 is not deprecated. No changelog or advisory data is available.\n\nmigrations/001-create-projects.sql creates the projects table; migrations/002-add-status.sql adds a status column. src/bootstrap.js applies both migrations in order for fresh installations. src/import.js contains TODO: bulk import, which the current roadmap lists as planned work. These are the complete relevant inputs.",
+      "expected_output": "A conservative report recognizes the build-time dependency and required migration history, separates a possible major upgrade from removal, and states compatibility and advisory evidence limits.",
+      "files": [],
+      "expectations": [
+        "Retains fixture-build as a build/CI consumer dependency despite the lack of application imports.",
+        "Distinguishes declared ^2.0.0, installed 2.1.4, and supplied latest 3.0.0 in the dependency audit.",
+        "Treats major-upgrade compatibility and advisory status as unverified rather than inventing breaking changes or vulnerabilities.",
+        "Keeps both migrations because fresh installation explicitly requires their ordered history.",
+        "Does not label the active bulk-import TODO stale merely because it is unfinished, and makes no file changes."
+      ]
+    }
+  ]
+}

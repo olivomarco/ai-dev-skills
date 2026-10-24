@@ -1,6 +1,6 @@
 ---
 name: dry-consolidation
-description: Audit a codebase for duplication and inconsistency (DRY violations) and propose concrete consolidation into shared components, helpers, and utilities. Use when asked to "find duplication", "DRY this up", "check consistency", "deduplicate code", or "find repeated patterns". Technology-agnostic.
+description: Audit duplication and inconsistent patterns, then propose shared building blocks and a prioritized consolidation plan.
 disable-model-invocation: true
 metadata:
   author: olivomarco
@@ -8,72 +8,46 @@ metadata:
   argument-hint: <path-or-area-to-audit>
 ---
 
-# DRY & Consolidation Audit
+# DRY Consolidation Audit
 
-## Mission
-
-Audit the codebase for repeated logic, copy-pasted code, and inconsistent patterns (UI, behavior, styling, structure), then propose concrete opportunities to consolidate duplication into shared, reusable building blocks. Report findings and a consolidation plan; do not refactor unless explicitly asked.
-
-## Scope & Preconditions
-
-- If the user names an area, scope there; otherwise cover the whole repository.
-- Infer the stack and inspect existing shared code first (e.g. `shared/`, `common/`, `utils/`, `lib/`, `hooks/`, `components/`) so you don't propose recreating something that already exists.
-- Respect the project's existing conventions and module boundaries.
+Find repeated knowledge and inconsistent implementations of the same concept. Report consolidation opportunities; refactor only when the user explicitly asks.
 
 ## Workflow
 
-### Phase 1 — Duplication Discovery
-1. **Repeated logic** — Find blocks of near-identical logic across files (validation, formatting, parsing, mapping, guards). Group them.
-2. **Copy-paste families** — Identify families of components/functions/classes that differ only slightly and could share a base or be parameterized.
-3. **Constants & config** — Find duplicated literals, magic numbers, strings, endpoints, and config values that should be centralized.
+1. **Scope.** Audit the named area, or the repository if none is named. Identify the stack, module boundaries, conventions, and existing shared components, hooks, utilities, and constants. Finish with the audit boundary and reusable building blocks located.
+2. **Discover.** Inspect every applicable category below in maintained source. Trace generated duplication to its generator and leave third-party internals outside the audit. Group related occurrences and record each location as `file:line-range`. Finish when each category is examined or marked not applicable; disclose any uninspected area.
+3. **Validate.** Read each candidate occurrence in context. Establish whether the variants encode the same rule or behavior and should change together. Retain intentional differences; identical syntax or equal literals alone do not justify consolidation. Finish with supported clusters and a reason for treating each divergence as a problem.
+4. **Design.** For each supported cluster, prefer an existing shared implementation. Otherwise, propose the smallest abstraction serving at least two occurrences. Preserve module boundaries, contracts, and meaningful variations. Finish when each recommendation names its consumers, API, migration risks, and behavior-preserving checks.
+5. **Prioritize.** Rank by user impact and maintenance savings relative to effort and coupling. Identify low-risk reuse of existing helpers as quick wins. Finish when every supported cluster has a proposed action or a reason to leave it separate.
 
-### Phase 2 — Consistency Audit
-1. **Behavioral patterns** — Compare how the same concept is implemented across the app (data fetching, error handling, retries, pagination, auth/permission checks). Flag divergent approaches.
-2. **UI patterns** (if applicable) — Compare buttons, forms, modals/dialogs, cards, tables, empty/loading/error states, toasts. Flag inconsistent variants and ad-hoc reimplementations of the same concept.
-3. **Formatting** — Flag inconsistent date/time, number, and currency formatting done multiple different ways.
-4. **Structural patterns** — Verify handlers/operations/modules follow a uniform shape (e.g. validate → authorize → act → respond). Flag outliers.
+## Audit categories
 
-### Phase 3 — Consolidation Opportunities
-For each duplication cluster, propose a single shared component, hook, helper, or constant. Verify the proposed abstraction does not already exist before suggesting creating it.
+| Category | Look for |
+| --- | --- |
+| Logic | Repeated validation, parsing, mapping, formatting, and guards |
+| Copy-paste families | Components, functions, or classes differing only in parameters or small variants |
+| Constants and configuration | Repeated domain values, endpoints, and settings with one intended source of truth |
+| Behavior | Divergent fetching, retries, pagination, error handling, and permission checks |
+| UI and styling | Reimplemented controls, dialogs, tables, feedback states, and visual variants of the same concept |
+| Formatting | Inconsistent dates, times, numbers, and currencies |
+| Structure | Outlier operation flows, such as authorization occurring at a different stage |
 
-## Output Expectations
+## Report
 
-Produce a Markdown report with:
+Lead with the most valuable consolidations and the scope inspected. If none are justified, say so.
 
-### Executive Summary
-Overview of the consistency/duplication state and the most impactful opportunities.
+**Duplication map**
 
-### Duplication Map
-| Pattern | Occurrences | Files | Shared version exists? |
+| Pattern | Occurrences | Locations | Existing shared version |
 | --- | --- | --- | --- |
 
-### Consistency Issues
-A numbered list, each with:
-- **Category**: UI / Behavior / Formatting / Structure
-- **Issue**: what is inconsistent or duplicated
-- **Locations**: file paths and line ranges of each variant
-- **Severity**: Low / Medium / High (by user impact and maintenance cost)
+**Consistency issues:** For each, give its category, differing behaviors, all variant locations, and severity (High / Medium / Low) based on user impact and maintenance cost.
 
-### Proposed Shared Building Blocks
-For each proposed component/hook/utility/constant:
-- **Name**: proposed name
-- **Type**: Component / Hook / Utility / Constant
-- **Replaces**: files and line ranges it would replace
-- **API sketch**: brief interface
-- **Effort**: S / M / L
-- **Impact**: number of call sites consolidated
+**Shared building blocks:** For each proposal, give its name and type, existing implementation to reuse or reason for a new one, API sketch, replaced locations, call-site count, effort (S / M / L), and migration risks or checks.
 
-### Prioritized Consolidation Plan
+**Consolidation plan**
+
 | Priority | Item | Type | Effort | Files affected | Impact |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 
-### Quick Wins
-Low-effort, low-risk consolidations (e.g. replacing inline duplicates with an existing helper).
-
-## Quality Assurance
-
-- Every finding must reference specific file paths and line ranges.
-- Do NOT propose extracting an abstraction used in only one place.
-- Verify a shared version doesn't already exist before suggesting creation.
-- Prefer the smallest abstraction that removes the duplication; avoid over-engineering.
-- Do not refactor unless explicitly asked. This skill reports by default.
+Mark quick wins in the plan rather than repeating them in a separate list.

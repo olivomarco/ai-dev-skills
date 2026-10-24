@@ -99,7 +99,15 @@ copilot plugin update ai-dev-skills
 
 | Skill | What it does | Changes code? |
 | --- | --- | --- |
-| [`youtube-transcript`](skills/youtube-transcript/SKILL.md) | Deterministically downloads transcripts from a YouTube video or playlist (via `yt-dlp`) and produces a detailed summary | No (writes transcripts) |
+| [`youtube-transcript`](skills/youtube-transcript/SKILL.md) | Downloads available YouTube captions via `yt-dlp` and summarizes the captured text | No (writes transcripts) |
+
+## Skill evaluation cases
+
+Each skill's `evals/evals.json`, when present, contains prompts, expected results,
+and checkable expectations. Input paths in `files` are relative to that skill.
+Before invoking a skill, copy its listed inputs into a fresh working directory
+for each case and comparison variant; keep bundled fixture originals unchanged.
+Expected results describe success criteria, not measured outcomes.
 
 ## Repository instructions template
 

@@ -1,0 +1,8 @@
+{
+  "name": "format-cli-eval-fixture",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/cli.js"
+  }
+}

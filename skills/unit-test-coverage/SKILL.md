@@ -1,6 +1,6 @@
 ---
 name: unit-test-coverage
-description: Audit unit-test coverage gaps and generate new tests to improve confidence on critical paths. Use when asked to "improve test coverage", "find untested code", "write missing unit tests", "audit test coverage", or "increase coverage". Technology-agnostic.
+description: Audit unit-test gaps and add focused tests for critical behaviors using the project's existing test setup.
 disable-model-invocation: true
 metadata:
   author: olivomarco
@@ -8,68 +8,44 @@ metadata:
   argument-hint: <path-or-area-to-cover>
 ---
 
-# Unit Test Coverage Audit & Enhancement
+# Unit Test Coverage
 
-## Mission
-
-Analyze the existing unit-test suite, identify coverage gaps (prioritizing business-critical and security-sensitive code), and generate new tests that meaningfully improve confidence. This skill **writes tests** — but never weakens or alters production code to make tests pass.
-
-## Scope & Preconditions
-
-- If the user names an area, scope there; otherwise cover the primary source.
-- **Detect the test setup first**: find the test runner and coverage tool from manifests/config (e.g. Jest/Vitest/Mocha, pytest, go test, JUnit, RSpec, PHPUnit) and the command used to run them. If you cannot determine the commands, ask the user before proceeding.
-- **Read existing tests first** — they are the canonical style guide for structure, naming, mocking, and fixtures. Match them.
-- Read any testing docs/instructions in the repo before writing tests.
+Add tests that increase confidence in critical behavior. Keep production code unchanged; report any production bug a test exposes.
 
 ## Workflow
 
-### Phase 1 — Coverage Baseline
-1. Run the project's coverage command and capture the output. If no coverage tool exists, derive coverage manually by mapping source units to existing tests.
-2. Build a **coverage matrix**: for each major area, record current line/branch/function coverage and mark it 🟢 Good (≥80%), 🟡 Needs work (40–79%), or 🔴 Missing/Critical (<40% or none).
+1. **Discover.** Scope to the named area, or primary source if none is named. Read repository testing instructions, runner and coverage configuration, and representative existing tests. Finish with the commands, test layout, fixture style, and mocking conventions identified. If the test command cannot be determined, ask before proceeding.
+2. **Baseline.** Run the existing test command for the scope, with coverage when configured, and record results and failures. If coverage tooling is absent, map source units and behaviors to tests manually and label numeric coverage unavailable; adding tooling requires agreement. Finish with each major area accounted for and pre-existing failures distinguished from missing coverage.
+3. **Select gaps.** Inspect untested public units, branches, error paths, boundary cases, permission checks, and domain rules. Include critical behavior even in high-coverage files. Rank using the priorities below. Finish with a bounded set of behaviors to test and a reason each matters; record remaining gaps.
+4. **Write tests.** Apply the test rules below to each selected behavior. Finish when every selected gap has an executable test exercising the real unit or a documented blocker requiring integration tests or production changes.
+5. **Validate.** Run the smallest existing suite covering the added tests and affected units, plus existing lint/type checks for edited test files. Repeat the same coverage command when available for comparable before/after results. Broaden checks if failures or shared fixtures warrant it. Fix test defects and rerun affected checks. Finish when added tests pass, suite results are accounted for, and coverage changes are explained. If a test reveals a production bug, preserve a faithful reproducer and report the blocker; leave the run explicitly incomplete rather than masking the failure.
 
-### Phase 2 — Gap Analysis
-For each 🔴 and 🟡 area, identify:
-1. **Untested units** — public functions/handlers/operations with no test.
-2. **Untested branches** — conditionals, error paths, permission checks, edge cases.
-3. **Untested security paths** — auth, authorization, input validation, rate limiting.
-4. **Untested business logic** — calculations, state machines, scoring, money/units.
+## Gap priorities
 
-Prioritize gaps by risk:
-- **P0 — Security**: auth, authorization, payments, input validation
-- **P1 — Data integrity**: create/update/delete of user data
-- **P2 — Business logic**: domain rules, calculations
-- **P3 — Presentation**: rendering, display logic, formatting
+| Priority | Behavior |
+| --- | --- |
+| P0 | Authentication, authorization, payments, input validation, and rate limiting |
+| P1 | Data integrity during create, update, and delete operations |
+| P2 | Domain rules, calculations, state transitions, scoring, money, and units |
+| P3 | Rendering, display logic, and formatting |
 
-### Phase 3 — Test Generation
-For each gap, write tests that:
-- Mirror the existing test layout, naming, and mocking conventions.
-- Use one group/`describe` per unit and one case per behavior, with descriptive names (e.g. "rejects request when user is not authenticated").
-- Cover happy path, error paths, edge cases, and auth/permission checks.
-- Mock external services (network, DB, payment, storage, clock) — never make real calls or touch real infrastructure.
-- Assert something meaningful — avoid tests that only check "does not throw".
+Use repository coverage targets when defined. Otherwise, use 80% or more, 40-79%, and below 40% as triage bands, not proof of behavioral coverage or completion.
 
-### Phase 4 — Validation
-1. Run the test suite and ensure all new tests pass.
-2. Re-run coverage and confirm it improved.
-3. Fix failing tests you wrote. If a test reveals a production bug, **do not silently change production code to hide it** — flag the bug separately. Never use skip/todo to mask failures.
+## Test rules
 
-## Output Expectations
+- Follow existing layout, grouping, naming, mocking, and fixture conventions. Name cases by observable behavior.
+- Exercise the real unit and assert its output, state change, or interaction contract. Mock external boundaries rather than the behavior under test.
+- Cover relevant success, failure, edge, and permission cases for each selected gap.
+- Isolate network, filesystem, database, payment, storage, and clock effects with mocks or existing in-memory fakes. Keep cases independent of execution order and shared mutable state.
+- Keep every added case runnable with meaningful assertions. Skips, todos, weakened expectations, and production edits are not ways to obtain a passing result.
 
-### Coverage Report
-Coverage matrix with before/after columns and delta.
+## Report
 
-### New Tests Summary
-| Test File | Tests Added | Area | Priority |
+**Coverage:** Give before/after line, branch, and function coverage with deltas for each inspected area, where measured. For a manual map, report tested and untested behaviors instead of invented percentages. Note unchanged metrics when new tests strengthen assertions on already-covered code.
+
+**New tests**
+
+| Test file | Tests added | Behaviors covered | Priority |
 | --- | --- | --- | --- |
 
-### Remaining Gaps
-Areas that couldn't be covered with unit tests (e.g. needs integration test) and recommended next steps.
-
-## Quality Assurance
-
-- All tests must pass; the suite must exit cleanly.
-- No test may depend on execution order or shared mutable state.
-- No test may make network requests or touch real filesystems/databases — mock them.
-- Do NOT modify production code to make tests pass; test the code as-is and flag bugs separately.
-- Do NOT add skipped/todo tests to inflate counts — every test must run and assert.
-- Verify new tests actually exercise the code under test (not passing vacuously).
+**Validation and remaining gaps:** State commands and outcomes, distinguish baseline failures from new failures, and identify production bugs, integration-test needs, or other blockers.

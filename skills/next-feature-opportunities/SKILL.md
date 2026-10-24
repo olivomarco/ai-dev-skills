@@ -1,6 +1,6 @@
 ---
 name: next-feature-opportunities
-description: Review an application as a product and recommend the most impactful next features and functional improvements to build. Use when asked "what should I build next", "suggest new features", "next feature opportunities", "product improvement ideas", or "what's missing". Technology-agnostic.
+description: Recommend the next product features and UX improvements, ranked by user value and grounded in the existing application.
 disable-model-invocation: true
 metadata:
   author: olivomarco
@@ -10,53 +10,36 @@ metadata:
 
 # Next Feature Opportunities
 
-## Mission
-
-Analyze the application as a product — its current features, user flows, and gaps — and recommend the most impactful next features and functional improvements to build. Think like a product manager with deep technical understanding. Output ideas and a plan; do not implement anything.
-
-## Scope & Preconditions
-
-- If the user names a focus area or target audience, center recommendations there.
-- Infer the product from the codebase: map the feature set from routes, handlers/operations, and the directory structure, plus any `docs/`, `README`, product, or requirements files.
-- Ground every recommendation in what actually exists — no invented features or assumptions about code that isn't there.
+Recommend what to build next, using the product's current capabilities and user flows as evidence. This is a recommendation task; leave implementation unchanged.
 
 ## Workflow
 
-1. **Audit current features** — Build a complete map of what the product does today from routes/handlers and docs.
-2. **Identify UX gaps** — Incomplete flows, missing feedback states, friction points, and accessibility gaps that block value.
-3. **Spot missing capabilities & integrations** — Adjacent capabilities or integrations that would extend existing value (e.g. import/export, sync, sharing, notifications, search, automation).
-4. **Evaluate engagement & retention** — Assess onboarding, habit loops, and any gamification/notifications; suggest improvements that drive repeat use.
-5. **Evaluate monetization** (if applicable) — Examine how value is gated and recommend features likely to improve conversion or expansion.
-6. **Differentiate** — Suggest features that would set the product apart from typical competitors in its category.
+1. **Map the product.** Honor any named focus area and audience; otherwise inspect the application. Trace routes, screens, handlers, models, and integrations alongside product docs and requirements. If an unknown audience or goal would materially change the ranking, ask a focused question; otherwise state the working assumption. Finish with a map of each major capability in scope, its user flow, and source locations. Distinguish implemented behavior from documented plans, label UX behavior inferred from source rather than observed, and identify unexplored areas.
+2. **Find opportunities.** Apply each relevant lens below to the map. Check plausible gaps against existing implementations, including less visible routes or settings, before calling a capability missing. Finish with candidates tied to an observed limitation or an extension of an existing capability.
+3. **Rank.** Compare user value, flow blockers, reach, implementation effort, dependencies, and uncertainty. Use P0 for critical blockers, P1 for high-value work, P2 for medium-value work, and P3 for optional polish. Finish with an ordered shortlist and an explicit reason for each ranking. Treat demand, retention, and revenue effects as hypotheses unless supported by supplied research or analytics.
+4. **Make actionable.** For the top five supported opportunities, or fewer if evidence warrants, identify the user outcome and the smallest useful scope. Ground implementation considerations in the actual framework, models, operations, and UI patterns. Label proposed additions as new work. Finish when each top recommendation has evidence, a user story, an effort estimate, and a way to assess its value.
 
-## Output Expectations
+## Opportunity lenses
 
-Produce a Markdown report with:
+| Lens | Examine |
+| --- | --- |
+| UX completeness | Interrupted flows, missing loading/error/empty states, friction, and accessibility barriers |
+| Adjacent capabilities | Import/export, search, sharing, sync, notifications, automation, or integrations that extend current value |
+| Engagement | Onboarding and reasons to return that serve the user's goals |
+| Monetization | Existing value gates and conversion or expansion opportunities, when relevant to the product |
+| Differentiation | Distinctive value built on current strengths; verify competitor claims or label them as hypotheses |
 
-### Feature Health Overview
-Brief assessment of current feature completeness and polish.
+## Report
 
-### Improvement Suggestions
-For each suggestion:
-- **Area**: which part of the product it affects
-- **Suggestion**: what to improve or add
-- **User value**: why it matters to end users
-- **Effort estimate**: Small / Medium / Large
-- **Priority**: P0 (critical) / P1 (high) / P2 (medium) / P3 (nice-to-have)
+**Feature health:** Briefly describe what works today, incomplete flows, and the scope or evidence limits.
 
-### Top 5 Next Features to Build
-A ranked list, each with:
-- Description
-- User story ("As a … I want to … so that …")
-- Key implementation considerations (data models, operations, UI/components needed) grounded in the existing architecture
-- Estimated complexity
+**Ranked opportunities**
 
-### Quick UX Wins
-Low-effort improvements that immediately boost the experience.
+| Priority | Area | Suggested change | Evidence | User value | Effort |
+| --- | --- | --- | --- | --- | --- |
 
-## Quality Assurance
+Use source paths and relevant symbols or line ranges for evidence. Estimate effort as Small / Medium / Large and state material dependencies.
 
-- Every suggestion must be grounded in what actually exists in the codebase (no assumptions).
-- Implementation considerations must respect the project's actual framework and patterns.
-- Recommendations must be actionable and specific (not "improve performance" but what and how).
-- This skill recommends only; it does not implement features.
+**Top features:** Expand the top five, or the supported subset, without repeating the table. For each, give a user story ("As a ... I want to ... so that ..."), minimum useful scope, architecture-specific implementation considerations, complexity drivers, and a success signal.
+
+Mark low-effort UX wins in the table. State open product questions that could change the ranking rather than filling gaps with invented user needs.

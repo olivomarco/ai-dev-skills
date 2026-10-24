@@ -1,0 +1,31 @@
+{
+  "skill_name": "ai-slop-detector",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review this AI-assisted pricing change for defects. Report only; do not edit files. This is the complete review snapshot, so limit conclusions to the supplied evidence rather than auditing the surrounding workspace.\n\nsrc/pricing.js (starting at line 1):\n```js\n// Optimized: 75% faster than the old implementation.\nexport function discountedPrice(cents, percent) {\n  const result = cents * (percent / 100);\n  return result;\n}\n```\n\nThe API contract accepts nonnegative integer cents and an integer discount from 0 to 100, returning the price after discount, rounded down to integer cents. For example, discountedPrice(10000, 20) must return 8000. No benchmark, callers, or tests are supplied.",
+      "expected_output": "An evidence-based report identifies the incorrect discounted price and unsupported performance claim, with locations, a minimal remedy, and meaningful regression cases. It separates observed defects from unavailable integration evidence.",
+      "files": [],
+      "expectations": [
+        "Identifies that discountedPrice(10000, 20) currently returns 2000 instead of the contracted 8000.",
+        "Proposes calculating the remaining price and rounding down, with regression checks for 0%, 100%, and a fractional-cent result.",
+        "Flags the 75% performance claim as unsupported without inventing replacement benchmark numbers.",
+        "Does not infer AI authorship or a security vulnerability from the generic result variable or comment.",
+        "Makes no file changes and discloses that callers, integration behavior, and benchmarks were not verified."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We repeatedly get unfamiliar package imports from our code generator. This is a prevention-only request: recommend the smallest dependency-verification guardrail, not a full code audit or CI rewrite. Do not install packages or access the network.\n\nThe latest proposed package.json contains {\"imports\":{\"#columns\":\"./src/columns.js\"},\"dependencies\":{\"csv-helper-ultra\":\"^9.9.9\"}}. The proposed parser imports parse from 'csv-helper-ultra' and columns from '#columns'; src/columns.js exists locally. We have no registry metadata, lockfile, advisory results, or provenance evidence for csv-helper-ultra. Explain what we can and cannot conclude now and what must be checked before using it.",
+      "expected_output": "A focused prevention proposal distinguishes the local import alias from an unverified registry dependency and identifies the evidence needed before installation. It does not invent registry results or expand into an unrelated audit.",
+      "files": [],
+      "expectations": [
+        "Treats #columns as a configured local alias rather than a hallucinated registry package.",
+        "Describes csv-helper-ultra as unverified, not proven nonexistent, legitimate, or malicious.",
+        "Recommends verifying the exact package name, version, source, intended API, and provenance before installation or execution.",
+        "Proposes a narrowly scoped generation or review guardrail without requiring a complete audit or new CI platform.",
+        "Performs no package installation or network lookup and does not fabricate audit results."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+Use delays of one, two, and four seconds between attempts.
+Stop when the configured retry budget is exhausted, and keep attempts from overlapping.

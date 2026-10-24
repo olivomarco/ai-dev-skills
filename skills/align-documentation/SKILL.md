@@ -1,52 +1,30 @@
 ---
 name: align-documentation
-description: Audit and update existing documentation so it matches the current codebase — in-place updates only, no new files. Use when asked to "align the docs", "update documentation", "fix stale docs", "sync docs with code", or "check docs accuracy". Technology-agnostic.
+description: Align existing documentation with the codebase through in-place edits. Use when asked to sync docs with code, fix stale instructions, document existing behavior, or check documentation accuracy.
 metadata:
   author: olivomarco
   version: "1.0.0"
   argument-hint: <docs-path-or-glob>
 ---
 
-# Align Documentation with the Codebase
+# Align Documentation
 
-## Mission
-
-Audit existing documentation and update any content that is stale, incorrect, or missing relative to the actual codebase. **Do NOT create new files** — only edit existing ones, in place. **Do NOT change source code** — docs only.
-
-## Scope & Preconditions
-
-- Discover the docs to audit: by default `README*`, files under `docs/`, and other Markdown/docs the user points to. If the user provides a path or glob, use exactly that. These are the only files you may touch.
-- Infer the stack so you can read the right source files when verifying claims.
-- If a doc references an external framework/library and you're unsure what's current, consult authoritative up-to-date sources (official docs / a docs MCP tool) before judging correctness.
+Update existing docs to match verified behavior. Edit documentation only; preserve existing files, structure, voice, and valid rationale. Create no files and leave source code unchanged.
 
 ## Workflow
 
-1. **Discover all docs** — List every doc file in scope. These are the only files you may edit.
-2. **Read the codebase** — For each doc, identify the features, APIs, commands, or patterns it describes, then read the relevant source to learn the current state.
-3. **Diff doc vs. code** — For each doc, note every discrepancy:
-   - Outdated API signatures, import paths, or commands
-   - Removed or renamed files/functions/modules/entities
-   - Missing coverage of features that already exist in the code
-   - Wrong instructions (wrong command, wrong config, wrong convention)
-4. **Update in place** — Edit each doc to fix the discrepancies. Keep the existing structure and tone. Remove only what is factually wrong; preserve still-valid context and rationale.
-5. **Report** — After all edits, output a summary table.
+1. **Scope.** Use the user's paths or glob exactly. Otherwise, inventory `README*` and documentation under `docs/`. Finish with an explicit list of every document to audit; only those files may be edited. If nothing matches, report that and stop.
+2. **Verify.** For each document, trace its claims about features, APIs, paths, commands, configuration, and conventions to source, manifests, or tests. Check for existing functionality missing from the document's subject. For uncertain framework or library claims, consult official documentation for the version the project uses. Surface conflicting sources instead of silently choosing one. Finish when every relevant claim is checked or marked unresolved with the missing evidence.
+3. **Align.** Correct verified discrepancies in place: outdated signatures or paths, removed entities, incorrect instructions, and missing descriptions of existing behavior. Limit edits to factual alignment; preserve unrelated wording and formatting. Leave unresolved claims unchanged and identify them in the report.
+4. **Check.** Recheck each changed claim against its evidence and verify affected links, paths, and examples. Validate commands through configuration, help output, or non-destructive checks; examples that deploy, delete, or change external services remain reference unless separately authorized. Use existing documentation checks when available. Finish when every edit is supported and the diff contains only scoped documentation changes.
 
-## Output Expectations
+## Report
 
-After making edits, output:
+Account for every document in the scope:
 
-### Summary Table
 | File | Changes made |
 | --- | --- |
-| docs/FOO.md | Updated X, removed Y, added note about Z |
+| docs/usage.md | Corrected the CLI command and renamed configuration key |
+| README.md | No changes needed |
 
-If a doc was already accurate, record "No changes needed".
-
-## Constraints
-
-- Do NOT create any new file anywhere.
-- Do NOT delete any existing doc file.
-- Do NOT change source code — documentation only.
-- Do NOT reformat for style alone; only change content that is factually wrong or missing.
-- Preserve each doc's existing voice, structure, and conventions.
-- Verify every change against the actual code before writing it; do not guess.
+List any unresolved claims and the evidence needed to settle them. If existing behavior needs a new document, note the gap rather than creating one.

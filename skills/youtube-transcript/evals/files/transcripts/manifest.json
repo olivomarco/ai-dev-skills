@@ -1,0 +1,59 @@
+{
+  "source_url": "https://www.youtube.com/playlist?list=PL_EVAL_CAPTIONS",
+  "language_priority": ["en"],
+  "video_count": 4,
+  "videos": [
+    {
+      "index": 1,
+      "id": "queue-demo",
+      "title": "Queue retries",
+      "uploader": "Fixture Channel",
+      "duration_seconds": 70,
+      "duration": "01:10",
+      "url": "https://www.youtube.com/watch?v=queue-demo",
+      "transcript_source": "auto",
+      "language_file": "queue-demo.en.vtt",
+      "txt": "queue-demo.txt",
+      "md": "queue-demo.md"
+    },
+    {
+      "index": 2,
+      "id": "backoff-demo",
+      "title": "Retry backoff",
+      "uploader": "Fixture Channel",
+      "duration_seconds": 40,
+      "duration": "00:40",
+      "url": "https://www.youtube.com/watch?v=backoff-demo",
+      "transcript_source": "manual",
+      "language_file": "backoff-demo.en.vtt",
+      "txt": "backoff-demo.txt",
+      "md": "backoff-demo.md"
+    },
+    {
+      "index": 3,
+      "id": "missing-demo",
+      "title": "The secret to tenfold throughput",
+      "uploader": "Fixture Channel",
+      "duration_seconds": 120,
+      "duration": "02:00",
+      "url": "https://www.youtube.com/watch?v=missing-demo",
+      "transcript_source": "none",
+      "language_file": null,
+      "txt": null,
+      "md": null
+    },
+    {
+      "index": 4,
+      "id": "empty-demo",
+      "title": "Never lose a queued job",
+      "uploader": "Fixture Channel",
+      "duration_seconds": 90,
+      "duration": "01:30",
+      "url": "https://www.youtube.com/watch?v=empty-demo",
+      "transcript_source": "empty",
+      "language_file": "empty-demo.en.vtt",
+      "txt": null,
+      "md": null
+    }
+  ]
+}

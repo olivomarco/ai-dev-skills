@@ -1,0 +1,42 @@
+{
+  "skill_name": "align-documentation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "In the supplied project working copy, align only docs/usage.md with the actual CLI. Correct stale commands and document supported formats. Preserve its existing voice and still-valid explanation. README.md and docs/reference.md are outside the edit scope even if you notice issues. Do not add files or change source/configuration. Work offline and use the supplied project as the source of truth.",
+      "expected_output": "An in-place correction of docs/usage.md uses the configured start command, correct format flag, and supported JSON/CSV values. Other files remain unchanged, and the report accounts for the scoped document.",
+      "files": [
+        "evals/files/project/package.json",
+        "evals/files/project/src/cli.js",
+        "evals/files/project/README.md",
+        "evals/files/project/docs/usage.md",
+        "evals/files/project/docs/reference.md"
+      ],
+      "expectations": [
+        "Changes docs/usage.md to use npm start -- --format csv or the equivalent configured start command rather than npm run serve -- --mode csv.",
+        "Documents json and csv as accepted formats and json as the default.",
+        "Preserves the valid explanation that selecting a format prints its name without contacting a service.",
+        "Leaves README.md, docs/reference.md, package.json, and src/cli.js unchanged and creates or deletes no files.",
+        "Reports the scoped file and ties corrections to the supplied script and CLI implementation."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Check and align only docs/reference.md in the supplied project working copy. Keep verified content intact. We have no deployment files or access to production, and this evaluation must stay offline. If the proxy-timeout statement cannot be verified, leave it unchanged and tell me what evidence is missing. Do not touch other files or add new ones.",
+      "expected_output": "The accurate CLI reference stays unchanged, and the production proxy-timeout claim is reported as unresolved rather than guessed, removed, or treated as verified.",
+      "files": [
+        "evals/files/project/package.json",
+        "evals/files/project/src/cli.js",
+        "evals/files/project/README.md",
+        "evals/files/project/docs/usage.md",
+        "evals/files/project/docs/reference.md"
+      ],
+      "expectations": [
+        "Verifies the json default and --format flag against src/cli.js without rewriting accurate text for style.",
+        "Leaves the unverified 30-second production proxy-timeout statement unchanged.",
+        "Reports the timeout claim as unresolved and requests deployment/proxy configuration or equivalent evidence.",
+        "Makes no file changes, network calls, or new-file additions and does not silently expand scope to the stale usage guide or README."
+      ]
+    }
+  ]
+}

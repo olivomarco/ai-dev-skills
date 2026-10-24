@@ -169,6 +169,48 @@
         "Keeps `config.yml` and `migrate --apply` unchanged, using readable instructions rather than compressed fragments.",
         "Adds no preamble, redundant summary, or extra operational step."
       ]
+    },
+    {
+      "id": 14,
+      "name": "expand-cryptic-help-text",
+      "prompt": "Humanize the help text below for first-time workspace admins. Use the product notes to make it understandable; they are source facts, not extra text to include verbatim.\n\nHelp text:\nDownloaded export gates deletion. Link TTL: seven days post-export. Local copies persist.\n\nProduct notes:\nAdmins must export their records and finish downloading the exported file before deleting the workspace. The download link expires seven days after the export finishes. Files already downloaded remain on the admin's device after the link expires.",
+      "intake_reply": "Revise, technical/docs, professional, the help text using the supplied product notes, return only the revised help text. The reader is a first-time admin deciding when it is safe to delete the workspace.",
+      "expected_output": "Plain-language help that may be longer than the source, making the download-before-deletion sequence and link-versus-local-file distinction explicit without inventing facts.",
+      "files": [],
+      "assertions": [
+        "Makes explicit that admins must export records and finish downloading the exported file before deleting the workspace.",
+        "States that the download link expires seven days after export completion, while files already downloaded remain on the admin's device after expiry.",
+        "Replaces cryptic shorthand with understandable prose for first-time admins; accepts a longer result rather than requiring readers to decode gates or TTL.",
+        "Returns only the revised help text and adds no unsupported behavior, recovery option, or new deadline."
+      ]
+    },
+    {
+      "id": 15,
+      "name": "functional-repetition-at-point-of-use",
+      "prompt": "Humanize these two help panels. Admins may open either panel independently, so each panel must remain usable on its own.\n\n## Export records\nDeleting a workspace permanently removes its records. Export your records and download the file before deleting the workspace. The download link expires after seven days.\n\n## Delete workspace\nDeleting a workspace permanently removes its records. Before selecting Delete workspace, finish downloading any export you want to keep. Previously downloaded files remain on your device.",
+      "intake_reply": "Revise, technical/docs, direct, both pasted panels, return only the panels. Each panel is shown separately to admins; retain the warning and the download-before-deletion instruction at each point of use.",
+      "expected_output": "Two self-contained panels retaining useful repeated warnings and prerequisites, with no extra recap or invented recovery promise.",
+      "files": [],
+      "assertions": [
+        "Keeps separate Export records and Delete workspace panels; each states that workspace deletion permanently removes its records.",
+        "Each panel independently tells admins to finish downloading the export they want to keep before deleting the workspace.",
+        "Retains the seven-day download-link expiry in the export panel and local-file persistence in the deletion panel.",
+        "Returns only the panels, preserving functional repetition without adding a generic recap, recovery promise, or unsupported step."
+      ]
+    },
+    {
+      "id": 16,
+      "name": "preserve-perspective-and-useful-transition",
+      "prompt": "Humanize this article passage:\n\nIt is important to note that I tried the planner for two weeks. I liked how little setup it needed. But here's the catch: it kept moving tasks I'd deliberately left alone. Less setup, more babysitting. For my work, that trade-off isn't worth it yet.",
+      "intake_reply": "Revise, article/blog, personal/editorial, the pasted passage only, return the rewrite. Keep my skeptical perspective and natural phrasing; the purpose is to explain why the low-setup planner is not yet useful for my work.",
+      "expected_output": "The filler opening disappears while the two-week experience, contrast, memorable phrasing, personal scope, and tentative judgment remain. No invented experience or promotional reframing.",
+      "files": [],
+      "assertions": [
+        "Removes the filler opening while retaining the two-week trial, low setup effort, and unwanted movement of deliberately untouched tasks.",
+        "Preserves the contrast between low setup effort and ongoing babysitting, including the author's distinctive 'Less setup, more babysitting.' phrasing.",
+        "Retains a natural transition into the drawback and the personal, tentative judgment that the trade-off is not worth it for the author's work yet.",
+        "Returns only the passage without invented experiences, universal recommendations, added certainty, or generic promotional framing."
+      ]
     }
   ]
 }
