@@ -11,9 +11,11 @@ metadata:
 
 ## Mission
 
-Optimize for what the reader understands, decides, remembers, or can do, in the user's chosen voice. Quality comes from serving that purpose, not content volume, component count, or visible effort. Treat attention as scarce: every sentence, visual, and interaction spends it.
+Optimize for what the reader understands, decides, remembers, or can do, in the user's chosen voice. Treat attention as scarce: every sentence, visual, and interaction spends it.
 
-Treat writing conventions and the checks below as tools, not requirements. Depart from a default when it improves accuracy, clarity, or reader value; honor explicit output constraints and source-preservation rules. Judge the result rather than how casual, short, or unlike AI-generated text it sounds.
+Guard against **goal displacement** (Merton): keep conventions, templates, and the checks below in service of the reader's outcome. Depart from a default when it improves accuracy, clarity, or reader value; honor explicit output constraints and source-preservation rules. Preserve justified detail and complexity.
+
+Counter **length bias** in LLM preference evaluation: judge communicative value rather than verbosity, elaborate formatting, apparent completeness, or visible effort. Shortness and a casual or "human" surface are not quality measures either. Use the named principles below as guides to judgment, not rules to recite in the output.
 
 ## Scope & Preconditions
 
@@ -50,7 +52,9 @@ Identify the baseline:
 
 Keep retained protected spans unchanged. Delete them with a whole example or section when it is irrelevant or established as obsolete. Resolve requests to change a protected span internally separately before proceeding. When a file format cannot be edited without damaging its structure, explain the limitation and request an editable excerpt.
 
-Apply **selection before production**: identify what the reader needs to know, decide, or do, and what they would otherwise have to guess. Select the necessary facts, qualifications, and context before drafting or polishing; relevance alone does not earn inclusion. When content is overloaded, remove lower-value concepts before shortening wording or tightening layout. Deletion can be the whole edit. Ask only when ambiguity affects meaning or safe action.
+Apply **selection before production**: identify what the reader needs to know, decide, or do, and what they would otherwise have to guess. Select the necessary facts, qualifications, and context before drafting or polishing; relevance alone does not earn inclusion. Ask only when ambiguity affects meaning or safe action.
+
+Counter **additive bias** (Adams et al.) with **subtraction first**: consider what can be removed before adding content or structure. When content is overloaded, remove lower-value concepts before shortening wording or tightening layout. Deletion can be the whole edit.
 
 For genre-specific decisions, read only the matching section of [Content types](references/content-types.md); for "other", use the user's confirmed format and constraints.
 
@@ -69,11 +73,11 @@ Apply user refinements to the preset. Writing samples guide cadence and word cho
 
 Use only source-supported facts, opinions, and experiences. For a new draft, build from the necessary facts and ask for missing information only when it blocks a useful, accurate result. Keep anecdotes, emotions, measurements, and commitments grounded in the source.
 
-Write to **sufficiency**: include what establishes the argument or enables correct action, with qualifications whose omission would materially change the conclusion. An additional example, category, caveat, or recommendation earns its place through that purpose, not as evidence of thoroughness. Where the task calls for a judgment, make a defensible one from the supplied evidence rather than offering automatic agreement.
+Apply **Grice's Cooperative Principle**: write to **sufficiency**, with accurate, relevant information and clear relationships. Include what establishes the argument or enables correct action, with qualifications whose omission would materially change the conclusion. An additional example, category, caveat, or recommendation earns its place through that purpose, not as evidence of thoroughness. Where the task calls for a judgment, make a defensible one from the supplied evidence rather than offering automatic agreement.
 
 Apply **evidence-bound editing**: a rewrite request authorizes removing or qualifying a conclusion that overstates the supplied evidence. Make that edit directly within the requested prose, preserving the underlying facts; a limited test may establish observed results without proving general readiness. Preserve genuine personal opinions as opinions. Ask only when an essential missing fact or unresolved choice prevents an accurate rewrite or safe action. Keep new research, invented replacement facts, and unrelated recommendations outside the edit.
 
-Apply the **reader-need test** to every sentence and, within the editable scope, every visual or interaction: what would this reader lose if it disappeared? Retain elements that materially help understanding, decisions, retention, or action, including through context, emphasis, or tone. If the loss is negligible, omit the element or merge its useful part elsewhere. A sentence need not introduce a new fact to provide value; judge its contribution in context. Lead with the point and keep enough explanation for the reader to understand or act.
+Apply **Mayer's Coherence Principle** through the **reader-need test**: for every sentence and, within the editable scope, every visual or interaction, what would this reader lose if it disappeared? Retain elements that materially help understanding, decisions, retention, or action, including through context, emphasis, or tone. If the loss is negligible, omit the element or merge its useful part elsewhere. A sentence need not introduce a new fact to provide value; judge its contribution in context. Lead with the point and organize the explanation around what the reader must understand.
 
 Scan all prose against these checks. Fix concrete problems; keep already-effective wording, natural rhythm, and the author's distinctive voice. These are contextual checks, not word bans or punctuation quotas.
 
@@ -84,7 +88,7 @@ Scan all prose against these checks. Fix concrete problems; keep already-effecti
 | Implied consequences | Check trailing "ensuring...", "making...", or "demonstrating..." clauses for unsupported guarantees or conclusions. Keep only consequences established by the source. |
 | Decorative language | Use literal wording for ornamental metaphors, personified systems, aphorisms, and dramatic fragments. Preserve imagery or personal phrasing that carries the author's actual meaning. |
 | Rhetorical contrast | Replace empty "it's not X, it's Y" framing with the point itself. Keep distinctions that correct a plausible misunderstanding or explain different behavior. |
-| Authority signaling | Establish expertise through precise reasoning, evidence, and accurate terminology. Replace institutional abstraction with the actual action or decision; retain domain terms when they distinguish real concepts. |
+| Processing fluency and jargon | Make reasoning easy to follow with intelligible explanations and explicit relationships. Replace institutional abstraction with the actual action or decision; retain precise domain terms and explain unfamiliar ones when the audience needs it. Expertise comes from precision and evidence; fluent wording alone does not make a claim true. |
 | Hidden agency | Prefer concrete subjects and ordinary verbs: "use" over "utilize", "is" over "serves as". Recover actions buried in nouns and name known actors when responsibility matters. Keep passive voice when the actor is unknown or the object deserves focus. |
 | Artificial structure | Let the argument determine paragraph length, headings, transitions, examples, and the number of points. Use symmetry only when it helps comparison or navigation. List topics directly when a "from X to Y" span has no meaningful scale; retain real ranges. Reuse a precise term instead of cycling through synonyms for the same thing. |
 | Uncalibrated uncertainty | Distinguish established facts, interpretations, and speculation. Place qualifications with the claims they limit; reduce stacked hedging to one appropriate qualification. Preserve justified certainty and meaningful uncertainty rather than making every statement tentative or equally confident. |
@@ -114,7 +118,7 @@ Review the argument paragraph by paragraph: identify each paragraph's contributi
 
 **Gate:** every source claim is accounted for as retained, consolidated, qualified against the evidence, or outside the confirmed purpose; all necessary information is understandable without unresolved essential gaps, every assertion is source-supported, and every retained protected span is unchanged. Accounting is an internal check, not a change log to append to the prose.
 
-Stop when this gate is met and further edits offer negligible reader value. Leave available space unfilled rather than expanding or polishing to make the artifact look complete.
+Apply **satisficing** (Simon): use this gate as the success criterion, and stop when it is met and further edits offer negligible reader value. Leave available space unfilled rather than expanding or polishing to make the artifact look complete.
 
 ## Output Expectations
 
