@@ -53,6 +53,8 @@ npx skills add blader/humanizer
 npx skills add mattpocock/skills
 npx skills add humanlayer/skills --skill show-me
 npx skills add anthropics/skills --skill skill-creator
+copilot plugin marketplace add DietrichGebert/ponytail
+copilot plugin add ponytail@ponytail
 
 # Drawings and diagrams
 npx skills add coleam00/excalidraw-diagram-skill
