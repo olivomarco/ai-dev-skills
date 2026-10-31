@@ -4,11 +4,10 @@
   "groupings": [
     {
       "title": "Code Quality",
-      "description": "Reviews that find duplication, stale code, and low-quality AI-generated code.",
+      "description": "Reviews that find duplication and stale code.",
       "skills": [
         "dry-consolidation",
-        "stale-code-check",
-        "ai-slop-detector"
+        "stale-code-check"
       ]
     },
     {
@@ -19,18 +18,9 @@
       ]
     },
     {
-      "title": "Testing",
-      "description": "Coverage audits and focused unit tests.",
+      "title": "Content",
+      "description": "Voice-aware prose editing.",
       "skills": [
-        "unit-test-coverage"
-      ]
-    },
-    {
-      "title": "Product & Docs",
-      "description": "Product recommendations, documentation alignment, and voice-aware prose editing.",
-      "skills": [
-        "next-feature-opportunities",
-        "align-documentation",
         "humanize-content"
       ]
     },

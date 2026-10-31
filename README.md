@@ -78,21 +78,17 @@ copilot plugin update ai-dev-skills
 
 ## Skills
 
-### Code Quality & Testing
+### Code Quality
 
 | Skill | What it does | Changes code? |
 | --- | --- | --- |
 | [`dry-consolidation`](skills/dry-consolidation/SKILL.md) | Finds duplication/inconsistency and proposes shared building blocks | No (reports) |
-| [`unit-test-coverage`](skills/unit-test-coverage/SKILL.md) | Audits coverage gaps and writes new unit tests | Yes (adds tests) |
 | [`stale-code-check`](skills/stale-code-check/SKILL.md) | Detects dead/obsolete code, deps, config, and assets | No (reports) |
-| [`ai-slop-detector`](skills/ai-slop-detector/SKILL.md) | Detects, prevents, and remediates low-quality AI-generated code | No (reports) |
 
-### Product & Documentation
+### Content
 
 | Skill | What it does | Changes code? |
 | --- | --- | --- |
-| [`next-feature-opportunities`](skills/next-feature-opportunities/SKILL.md) | Recommends the most impactful next features to build | No (recommends) |
-| [`align-documentation`](skills/align-documentation/SKILL.md) | Updates existing docs in place to match the codebase | Yes (edits docs) |
 | [`humanize-content`](skills/humanize-content/SKILL.md) | Applies a saved voice to writing and revision; cuts filler, stale content, and needless complexity | No code; saves voice preferences and optionally edits prose files |
 
 `humanize-content` is model-invoked for prose tasks, including user-facing replies;
