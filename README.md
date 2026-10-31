@@ -44,11 +44,6 @@ Install these separately; **they are not included in this repository's plugin**.
 Choose the ones you need.
 
 ```bash
-# Content humanization alternatives
-npx skills add lguz/humanize-writing-skill
-npx skills add cursor/plugins --skill unslop --full-depth
-npx skills add blader/humanizer
-
 # Coding
 npx skills add mattpocock/skills
 npx skills add humanlayer/skills --skill show-me
